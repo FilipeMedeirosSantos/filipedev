@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#005 — Por Que O Alienista? Pesquisa, Machado e Papers Please · FILIPE DEV</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/shared.css">
+<link rel="stylesheet" href="../css/article.css">
+
+<style>
+  /* ── PLACEHOLDER DE IMAGEM ── */
+  .img-placeholder {
+    border: 3px dashed var(--border);
+    background: repeating-linear-gradient(
+      45deg,
+      #f0ede0, #f0ede0 6px,
+      #e4e0d0 6px, #e4e0d0 12px
+    );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 24px;
+    margin: 16px 0;
+    min-height: 200px;
+    text-align: center;
+  }
+  .img-placeholder .ph-icon {
+    font-size: 32px;
+    opacity: 0.5;
+  }
+  .img-placeholder .ph-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: var(--text-muted);
+    line-height: 2;
+  }
+  .img-placeholder .ph-dim {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 6px;
+    color: #aaa;
+    border: 2px dashed #ccc;
+    padding: 3px 10px;
+  }
+  .img-placeholder-sm {
+    min-height: 120px;
+  }
+  .img-placeholder-lg {
+    min-height: 280px;
+  }
+
+  /* ── QUOTE BLOCK ── */
+  .quote-block {
+    border-left: 6px solid var(--accent);
+    background: #fffbf0;
+    border-top: 3px solid var(--border);
+    border-right: 3px solid var(--border);
+    border-bottom: 3px solid var(--border);
+    box-shadow: 4px 4px 0 var(--border);
+    padding: 18px 20px;
+    margin: 16px 0;
+  }
+  .quote-text {
+    font-size: 8px;
+    line-height: 2.4;
+    color: #333;
+    font-style: normal;
+  }
+  .quote-text em {
+    color: var(--accent2);
+    font-style: italic;
+  }
+  .quote-source {
+    font-size: 6.5px;
+    color: var(--text-muted);
+    margin-top: 10px;
+    display: block;
+    padding-top: 8px;
+    border-top: 1px dashed #ccc;
+  }
+
+  /* ── COMPARE CARD ── */
+  .compare-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 3px solid var(--border);
+    box-shadow: 5px 5px 0 var(--border);
+    overflow: hidden;
+    margin: 16px 0;
+  }
+  .compare-col {
+    padding: 0;
+  }
+  .compare-col + .compare-col {
+    border-left: 3px solid var(--border);
+  }
+  .compare-header {
+    font-size: 7.5px;
+    padding: 10px 14px;
+    border-bottom: 3px solid var(--border);
+  }
+  .compare-header.papers {
+    background: #1a2a4a;
+    color: #82c4e0;
+  }
+  .compare-header.alienista {
+    background: var(--accent2);
+    color: var(--accent);
+  }
+  .compare-body {
+    padding: 14px;
+    background: var(--card-bg);
+  }
+  .compare-item {
+    font-size: 7px;
+    color: #444;
+    padding: 6px 0;
+    border-bottom: 1px dashed #ddd;
+    line-height: 2;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .compare-item:last-child { border-bottom: none; }
+  .compare-item .ci-icon { flex-shrink: 0; }
+
+  /* ── MECHANIC MAP ── */
+  .mech-row {
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px dashed #ddd;
+    font-size: 7px;
+    line-height: 1.8;
+  }
+  .mech-row:last-child { border-bottom: none; }
+  .mech-left { color: #82c4e0; }
+  .mech-arrow { text-align: center; color: var(--accent); font-size: 12px; }
+  .mech-right { color: var(--accent2); }
+
+  @media (max-width: 900px) {
+    .compare-wrap {
+      grid-template-columns: 1fr;
+    }
+    .compare-col + .compare-col {
+      border-left: none;
+      border-top: 3px solid var(--border);
+    }
+  }
+</style>
+</head>
+<body>
+
+<div id="reading-progress"></div>
+
+<div class="layout">
+
+  <!-- ══ SIDEBAR ESQUERDA ══ -->
+  <aside class="sidebar-left">
+
+    <div class="sidebar-logo">
+      FILIPE DEV
+      <span class="logo-sub">Devlog — O Alienista</span>
+      <span class="logo-tag">PESQUISA</span>
+    </div>
+
+    <a href="../index.html" class="back-btn">← VOLTAR AO BLOG</a>
+
+    <span class="nav-section-title">▸ NESTE ARTIGO</span>
+
+    <nav class="nav-section">
+      <a href="#origem" class="nav-btn active">
+        <span class="nav-num">01</span>A Origem do Projeto
+      </a>
+      <a href="#alienista" class="nav-btn">
+        <span class="nav-num">02</span>O Alienista
+      </a>
+      <a href="#papers" class="nav-btn">
+        <span class="nav-num">03</span>Papers, Please
+      </a>
+      <a href="#correlacao" class="nav-btn">
+        <span class="nav-num">04</span>A Correlação
+      </a>
+      <a href="#metodologia" class="nav-btn">
+        <span class="nav-num">05</span>Jogo como Método
+      </a>
+    </nav>
+
+  </aside>
+
+  <!-- ══ CONTEÚDO PRINCIPAL ══ -->
+  <main class="main-content">
+
+    <div class="content-header">
+      <h1>Por Que O Alienista? Pesquisa, Machado e Papers, Please</h1>
+      <a href="../index.html" class="breadcrumb">← index</a>
+    </div>
+
+    <!-- Hero: cena noturna com elementos de documento -->
+    <div class="article-hero" style="background:#0a0e1a;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:20px;padding:16px;">
+      <!-- Documento de internação -->
+      <div style="background:#fffbf0;border:2px solid #e8c84a;box-shadow:3px 3px 0 #e8c84a;padding:10px 12px;font-family:'Press Start 2P',monospace;font-size:5.5px;line-height:1.9;color:#222;transform:rotate(-3deg);min-width:110px;">
+        <div style="color:#c0392b;font-size:5px;border-bottom:1px solid #ccc;padding-bottom:4px;margin-bottom:4px;">CASA VERDE</div>
+        <div>Cidadão: Nº 047</div>
+        <div>Estado: ???</div>
+        <div style="margin-top:6px;display:flex;gap:6px;">
+          <div style="padding:3px 7px;background:#4a7c3f;color:#fff;border:1px solid #222;font-size:5px;">SÃO</div>
+          <div style="padding:3px 7px;background:#c0392b;color:#fff;border:1px solid #222;font-size:5px;">ALIENADO</div>
+        </div>
+      </div>
+      <!-- Carimbo -->
+      <div style="font-size:28px;opacity:0.6;color:#c0392b;text-shadow:0 0 10px #c0392b44;">⊗</div>
+      <!-- Livro -->
+      <div style="background:#2a4a2a;border:2px solid #4a7c3f;box-shadow:3px 3px 0 #4a7c3f;padding:12px 10px;font-family:'Press Start 2P',monospace;font-size:5px;line-height:2;color:#cde8c8;transform:rotate(2deg);min-width:100px;">
+        <div style="color:#e8c84a;font-size:5.5px;margin-bottom:4px;">O ALIENISTA</div>
+        <div style="color:#aaa;">Machado de Assis</div>
+        <div style="margin-top:6px;color:#8b949e;font-size:4.5px;">1881 · Revista<br>Gazeta de Notícias</div>
+      </div>
+      <!-- Stars bg -->
+      <div style="position:absolute;top:10px;left:15px;font-size:6px;color:#fff;opacity:0.4;letter-spacing:8px;">· · · · · · · · ·</div>
+      <div style="position:absolute;bottom:10px;right:15px;font-size:6px;color:#fff;opacity:0.3;letter-spacing:10px;">· · · · · · ·</div>
+    </div>
+
+    <!-- ══════════════════════════════════════ -->
+    <!-- SEÇÃO 01 — ORIGEM -->
+    <!-- ══════════════════════════════════════ -->
+    <section class="guide-section" id="origem">
+      <span class="section-badge">▸ 01 — ORIGEM</span>
+      <h2 class="section-title">A Origem: Pesquisa como Jogo</h2>
+
+      <p class="section-intro">
+        Este jogo não nasceu de uma game jam nem de uma vontade solta de criar algo novo. Ele é o produto central de um projeto de pesquisa acadêmica — e entender essa origem muda completamente como você vai ler cada decisão de design aqui documentada.
+      </p>
+
+      <div class="callout info">
+        <span class="callout-title">🎓 CONTEXTO ACADÊMICO</span>
+        O desenvolvimento de <em>O Alienista</em> integra um projeto de pesquisa que investiga o uso de jogos digitais como ferramentas de mediação literária e crítica histórica. O jogo é simultaneamente objeto de estudo e produto final da investigação.
+      </div>
+
+      <div class="subsection">O que a pesquisa investiga</div>
+
+      <p class="section-intro">
+        A questão central é: <strong>como um jogo pode provocar no jogador a mesma reflexão ética que a literatura provoca no leitor?</strong> E mais especificamente — é possível usar mecânicas de julgamento e pressão sistêmica para traduzir a crítica machadiana ao poder médico e à razão institucional?
+      </p>
+
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">▸</div>
+          <div class="step-title">Os Três Eixos da Pesquisa</div>
+        </div>
+        <div class="step-body">
+          <ul>
+            <li><strong>Eixo 1 — Literatura:</strong> leitura crítica de O Alienista como texto sobre poder, razão e arbitrariedade</li>
+            <li><strong>Eixo 2 — Game Design:</strong> análise de como jogos como Papers, Please produzem desconforto moral no jogador</li>
+            <li><strong>Eixo 3 — Síntese:</strong> desenvolvimento de um jogo que aplique as mecânicas do Eixo 2 ao universo do Eixo 1</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PLACEHOLDER DE IMAGEM -->
+      <div class="img-placeholder img-placeholder-sm">
+        <div class="ph-icon">🖼️</div>
+        <div class="ph-label">Diagrama / esquema visual do projeto de pesquisa<br>ou foto da documentação / proposta acadêmica</div>
+        <div class="ph-dim">Sugestão: 800 × 400px · PNG ou JPG</div>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-title">⚠️ POR QUE UM JOGO, E NÃO UM ENSAIO?</span>
+        A escolha do jogo como produto não é arbitrária. Um ensaio descreve a crítica — um jogo te faz vivê-la. A pesquisa aposta que a experiência interativa tem um poder de engajamento ético que a leitura passiva não alcança da mesma forma.
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════ -->
+    <!-- SEÇÃO 02 — O ALIENISTA -->
+    <!-- ══════════════════════════════════════ -->
+    <section class="guide-section" id="alienista">
+      <span class="section-badge yellow">▸ 02 — A OBRA</span>
+      <h2 class="section-title">O Alienista de Machado de Assis</h2>
+
+      <p class="section-intro">
+        Publicado em 1881, O Alienista é um dos textos mais vertiginosos da literatura brasileira. Em menos de 100 páginas, Machado de Assis constrói uma fábula sobre loucura, poder e a violência silenciosa da razão institucionalizada.
+      </p>
+
+      <div class="obra-card">
+        <div class="obra-num">📖</div>
+        <div class="obra-content">
+          <div class="obra-title">O Alienista</div>
+          <div class="obra-author">Machado de Assis · 1881 · Publicado na Gazeta de Notícias</div>
+          <div class="obra-desc">O Dr. Simão Bacamarte chega à vila de Itaguaí com uma missão científica: estudar e curar a loucura. Funda a Casa Verde, um asilo, e começa a internar cidadãos. O problema: seus critérios de diagnóstico mudam constantemente. Quem é são? Quem é alienado? A resposta, Machado nos mostra, depende de quem tem o carimbo.</div>
+        </div>
+      </div>
+
+      <div class="subsection">O que torna o texto tão poderoso</div>
+
+      <div class="quote-block">
+        <div class="quote-text">
+          <em>"A ciência é assim, meu caro Crispim; vai progredindo. [...] Eu estava com a teoria errada. Os loucos são os que eu julgava sãos; os sãos são os loucos."</em>
+        </div>
+        <span class="quote-source">— Dr. Simão Bacamarte · O Alienista, Machado de Assis</span>
+      </div>
+
+      <p class="section-intro">
+        Essa inversão — o médico que muda os critérios de sanidade ao longo da narrativa, internando quase toda a cidade, inclusive a própria esposa — é o núcleo dramático que interessa ao projeto. Bacamarte não é um vilão caricato. É um homem convicto de estar fazendo o bem. E esse é exatamente o terror.
+      </p>
+
+      <!-- PLACEHOLDER DE IMAGEM -->
+      <div class="img-placeholder">
+        <div class="ph-icon">🖼️</div>
+        <div class="ph-label">Ilustração / concept art da Casa Verde<br>ou referência visual da obra / época (século XIX, Brasil imperial)</div>
+        <div class="ph-dim">Sugestão: 800 × 500px · PNG ou JPG</div>
+      </div>
+
+      <div class="px-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Elemento da Obra</th>
+              <th>O que representa</th>
+              <th>Relevância para o jogo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Dr. Bacamarte</td>
+              <td>O poder institucional da ciência</td>
+              <td>A voz que emite os decretos do dia</td>
+            </tr>
+            <tr>
+              <td>A Casa Verde</td>
+              <td>O espaço do confinamento justificado</td>
+              <td>Hub central do jogo, cresce com internações</td>
+            </tr>
+            <tr>
+              <td>Os critérios mutáveis</td>
+              <td>A arbitrariedade da razão oficial</td>
+              <td>Os decretos que mudam a cada dia de jogo</td>
+            </tr>
+            <tr>
+              <td>Os cidadãos de Itaguaí</td>
+              <td>A população submetida ao diagnóstico</td>
+              <td>Os personagens que o jogador julga</td>
+            </tr>
+            <tr>
+              <td>A inversão final</td>
+              <td>Ninguém escapa — nem o médico</td>
+              <td>Condição de game over / final reflexivo</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="theory-card">
+        <div class="theory-header">
+          <div class="theory-tag">LEITURA CRÍTICA</div>
+          O poder que se autolegitima
+        </div>
+        <div class="theory-body">
+          O que Machado descreve em 1881 é uma estrutura que permanece: uma autoridade define o que é normal, aplica esse critério com rigor aparente, e a população obedece porque a autoridade tem nome, cargo e discurso científico. O Alienista é uma sátira ao positivismo — mas também uma anatomia do autoritarismo burocrático que sobreviveu ao século XIX.
+          <div class="theory-effect">
+            ▸ No jogo: o jogador encarna esse sistema. Não observa — participa. Isso é a aposta central do design.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════ -->
+    <!-- SEÇÃO 03 — PAPERS, PLEASE -->
+    <!-- ══════════════════════════════════════ -->
+    <section class="guide-section" id="papers">
+      <span class="section-badge red">▸ 03 — REFERÊNCIA</span>
+      <h2 class="section-title">Papers, Please: O Tribunal do Cotidiano</h2>
+
+      <p class="section-intro">
+        Lançado em 2013 por Lucas Pope, Papers, Please é um dos jogos mais importantes da última década — não pela tecnologia, mas pelo que faz com o jogador. Você é um inspetor de imigração num estado distópico fictício. Seu trabalho: verificar documentos, aplicar as regras do dia e decidir quem entra e quem não entra.
+      </p>
+
+      <div class="obra-card">
+        <div class="obra-num">🎮</div>
+        <div class="obra-content">
+          <div class="obra-title">Papers, Please</div>
+          <div class="obra-author">Lucas Pope · 3909 LLC · 2013 · PC / iOS</div>
+          <div class="obra-desc">Jogo indie de puzzle-burocrático ambientado no país fictício Arstotzka. O jogador passa dias seguidos verificando documentos de imigrantes, aplicando regras cada vez mais complexas, equilibrando salário (para sustentar a família) com dilemas morais. A "Glory to Arstotzka" vai se tornando cada vez mais oca.</div>
+        </div>
+      </div>
+
+      <!-- PLACEHOLDER DE IMAGEM -->
+      <div class="img-placeholder img-placeholder-sm">
+        <div class="ph-icon">🖼️</div>
+        <div class="ph-label">Screenshot ou print de referência de Papers, Please<br>(tela de inspeção de documentos, interface do jogo)</div>
+        <div class="ph-dim">Sugestão: 800 × 450px · PNG · Verificar direitos de uso</div>
+      </div>
+
+      <div class="subsection">As mecânicas que interessam à pesquisa</div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">1</div>
+          <div class="step-title">Regras que mudam todo dia</div>
+        </div>
+        <div class="step-body">
+          Toda manhã, um novo boletim oficial. Novos critérios. O que era permitido ontem pode ser proibido hoje. O jogador nunca se instala confortavelmente — precisa ler, adaptar, reaprender. A burocracia não é estável: ela se move para manter o poder.
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">2</div>
+          <div class="step-title">Tempo como pressão</div>
+        </div>
+        <div class="step-body">
+          Há um relógio. Cada pessoa atendida leva tempo. Menos atendimentos = menos salário = família passa fome. O jogo te punindo pelo cuidado: quanto mais você investiga, mais devagar vai, mais perde. A eficiência entra em conflito direto com a ética.
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">3</div>
+          <div class="step-title">Cumplicidade silenciosa</div>
+        </div>
+        <div class="step-body">
+          Papers, Please não te pergunta se você concorda com o regime. Ele só te pede para apertar APROVAR ou NEGAR. A cumplicidade acontece na ausência de reflexão — exatamente como na vida real. O mal burocrático é feito por pessoas que estavam "apenas seguindo as regras".
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">4</div>
+          <div class="step-title">Documentos como narrativa</div>
+        </div>
+        <div class="step-body">
+          Cada pessoa traz um dossiê. Dentro dele, há uma história. Uma foto, um nome, uma origem, às vezes um bilhete escondido. O jogo te obriga a ler rápido — mas os detalhes estão lá para quem quer enxergar. A humanidade dos personagens resiste à redução burocrática.
+        </div>
+      </div>
+
+      <div class="result-box">
+        <span class="result-title">▸ O QUE PAPERS, PLEASE PROVA</span>
+        <div class="result-line success">✅ Mecânicas de julgamento criam empatia compulsória</div>
+        <div class="result-line success">✅ Pressão sistêmica gera cumplicidade sem vilania</div>
+        <div class="result-line success">✅ Regras mutáveis evidenciam a arbitrariedade do poder</div>
+        <div class="result-line success">✅ Dossiês humanizam quem o sistema quer desumanizar</div>
+        <div class="result-line warn">⚠️ Ambientação distópica cria distância "segura" do jogador</div>
+        <div class="result-line warn indent-1">→ Nossa solução: trazer para o Brasil, para a literatura nacional</div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════ -->
+    <!-- SEÇÃO 04 — A CORRELAÇÃO -->
+    <!-- ══════════════════════════════════════ -->
+    <section class="guide-section" id="correlacao">
+      <span class="section-badge">▸ 04 — CORRELAÇÃO</span>
+      <h2 class="section-title">A Correlação: Bacamarte como Inspetor</h2>
+
+      <p class="section-intro">
+        Quando colocamos O Alienista e Papers, Please lado a lado, a sobreposição é quase desconcertante. Os dois falam da mesma coisa com linguagens diferentes: o que acontece quando um sistema de classificação ganha poder de vida ou morte sobre as pessoas?
+      </p>
+
+      <!-- PLACEHOLDER DE IMAGEM -->
+      <div class="img-placeholder">
+        <div class="ph-icon">🖼️</div>
+        <div class="ph-label">Imagem de conceito lado a lado:<br>tela de Papers Please (esquerda) × interface do nosso jogo (direita)<br>ou moodboard visual da correlação</div>
+        <div class="ph-dim">Sugestão: 1200 × 500px · PNG</div>
+      </div>
+
+      <div class="compare-wrap">
+        <div class="compare-col">
+          <div class="compare-header papers">🎮 PAPERS, PLEASE</div>
+          <div class="compare-body">
+            <div class="compare-item"><span class="ci-icon">👤</span>Inspetor de imigração sem nome</div>
+            <div class="compare-item"><span class="ci-icon">📋</span>Boletim oficial diário com novas regras</div>
+            <div class="compare-item"><span class="ci-icon">🗂️</span>Documentos de identidade e passaportes</div>
+            <div class="compare-item"><span class="ci-icon">⏱️</span>Relógio de tensão e pressão econômica</div>
+            <div class="compare-item"><span class="ci-icon">✅</span>Carimbo APROVADO / NEGADO</div>
+            <div class="compare-item"><span class="ci-icon">🌍</span>Estado fictício autoritário (Arstotzka)</div>
+            <div class="compare-item"><span class="ci-icon">😶</span>Cumplicidade por omissão e automatismo</div>
+          </div>
+        </div>
+        <div class="compare-col">
+          <div class="compare-header alienista">📖 O ALIENISTA — O JOGO</div>
+          <div class="compare-body">
+            <div class="compare-item"><span class="ci-icon">👤</span>Examinador da Casa Verde (o jogador)</div>
+            <div class="compare-item"><span class="ci-icon">📋</span>Decreto diário do Dr. Bacamarte</div>
+            <div class="compare-item"><span class="ci-icon">🗂️</span>Dossiês com histórico, testemunhos, laudos</div>
+            <div class="compare-item"><span class="ci-icon">⏱️</span>Relógio de tensão e pressão por produtividade</div>
+            <div class="compare-item"><span class="ci-icon">✅</span>Carimbo SÃO / ALIENADO</div>
+            <div class="compare-item"><span class="ci-icon">🌍</span>Brasil imperial fictício (Itaguaí, séc. XIX)</div>
+            <div class="compare-item"><span class="ci-icon">😶</span>Cumplicidade com o poder científico-médico</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">Mapeamento de mecânicas</div>
+
+      <div class="flow-box">
+        <div class="flow-step">
+          <span class="flow-arrow">▸</span>
+          <span class="flow-actor" style="min-width:160px;">Regras mutáveis</span>
+          <span class="flow-action">Em PP: novo boletim a cada dia. Em O Alienista: novo decreto de Bacamarte. O critério do que é "certo" nunca estabiliza — o poder está sempre se reescrevendo.</span>
+        </div>
+        <div class="flow-step">
+          <span class="flow-arrow">▸</span>
+          <span class="flow-actor" style="min-width:160px;">Dossiê humanizador</span>
+          <span class="flow-action">Em PP: passaportes e bilhetes criam empatia. Em O Alienista: testemunhos de família, históricos de vida, relatos contraditórios. O sistema quer dados; o jogador encontra pessoas.</span>
+        </div>
+        <div class="flow-step">
+          <span class="flow-arrow">▸</span>
+          <span class="flow-actor" style="min-width:160px;">Pressão do relógio</span>
+          <span class="flow-action">Em PP: menos aprovações = menos salário. Em O Alienista: a fila de cidadãos não para, Bacamarte cobra resultados, a cidade observa. Julgar rápido demais é tão perigoso quanto julgar devagar.</span>
+        </div>
+        <div class="flow-step">
+          <span class="flow-arrow">▸</span>
+          <span class="flow-actor" style="min-width:160px;">Carimbo como ato moral</span>
+          <span class="flow-action">Em PP: um clique manda alguém embora — ou à morte. Em O Alienista: um carimbo priva alguém de liberdade, família, reputação. O gesto mecânico carrega peso narrativo máximo.</span>
+        </div>
+        <div class="flow-step">
+          <span class="flow-arrow">▸</span>
+          <span class="flow-actor" style="min-width:160px;">Sem vilão explícito</span>
+          <span class="flow-action">Em PP: você é o sistema. Em O Alienista: você também é. Bacamarte é o decreto, mas quem carimba é o jogador. A responsabilidade é distribuída — exatamente como nos aparatos reais de poder.</span>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <span class="callout-title">🔍 A DIFERENÇA QUE IMPORTA</span>
+        Papers, Please usa uma distopia inventada. O Alienista usa a literatura brasileira do século XIX — que fala de estruturas que ainda existem. O desconforto do jogador não é com o regime fictício de Arstotzka. É com o Brasil, com Machado, com o espelho.
+      </div>
+
+      <!-- PLACEHOLDER DE IMAGEM -->
+      <div class="img-placeholder img-placeholder-sm">
+        <div class="ph-icon">🖼️</div>
+        <div class="ph-label">Screenshot da interface de julgamento (dossiê + carimbos)<br>mostrando a mecânica central em ação</div>
+        <div class="ph-dim">Sugestão: 800 × 480px · PNG · Print do Godot ou mockup</div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════ -->
+    <!-- SEÇÃO 05 — METODOLOGIA -->
+    <!-- ══════════════════════════════════════ -->
+    <section class="guide-section" id="metodologia">
+      <span class="section-badge yellow">▸ 05 — METODOLOGIA</span>
+      <h2 class="section-title">O Jogo como Método de Pesquisa</h2>
+
+      <p class="section-intro">
+        O jogo não é o resultado da pesquisa — ele é o instrumento dela. Cada decisão de design é também uma hipótese. Cada mecânica implementada é um argumento sobre como a literatura pode ser experienciada, e não apenas lida.
+      </p>
+
+      <div class="theory-card">
+        <div class="theory-header">
+          <div class="theory-tag">HIPÓTESE CENTRAL</div>
+          Jogar O Alienista produz reflexão ética mais visceral do que lê-lo
+        </div>
+        <div class="theory-body">
+          A leitura do conto nos dá distância segura: observamos Bacamarte de fora, julgamos seus excessos com conforto crítico. O jogo elimina essa distância. Quando você carimba ALIENADO num personagem que acabou de te contar sua história, você não está mais do lado de fora do texto — você é o texto.
+          <div class="theory-effect">
+            ▸ Hipótese verificável: jogadores que completam o jogo apresentam maior engajamento com questões de poder e arbitrariedade em discussões posteriores à experiência.
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">Como o design traduz a pesquisa</div>
+
+      <div class="px-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Questão de pesquisa</th>
+              <th>Tradução em mecânica</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Como a arbitrariedade do poder é percebida?</td>
+              <td>Decretos de Bacamarte mudam a cada dia — o jogador sente a instabilidade na pele</td>
+            </tr>
+            <tr>
+              <td>O que produz cumplicidade com o sistema?</td>
+              <td>Pressão do relógio força decisões rápidas sem reflexão — como no trabalho real</td>
+            </tr>
+            <tr>
+              <td>Como humanizar quem o sistema desumaniza?</td>
+              <td>Dossiês com testemunhos, nomes, famílias — resistência dentro da burocracia</td>
+            </tr>
+            <tr>
+              <td>Qual o custo de obedecer sem questionar?</td>
+              <td>Finais diferentes dependem do padrão de decisões ao longo dos 10 dias</td>
+            </tr>
+            <tr>
+              <td>É possível resistir dentro do sistema?</td>
+              <td>Sim — mas com consequências. O jogo não deixa a resistência ser gratuita</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PLACEHOLDER DE IMAGEM -->
+      <div class="img-placeholder img-placeholder-lg">
+        <div class="ph-icon">🖼️</div>
+        <div class="ph-label">Imagem do processo de pesquisa / desenvolvimento<br>Sugestões: foto do ambiente de trabalho, rascunhos de design,<br>quadro com anotações, mapa conceitual do projeto</div>
+        <div class="ph-dim">Sugestão: 800 × 600px · PNG ou JPG</div>
+      </div>
+
+      <div class="checklist">
+        <div class="checklist-header">▸ PERGUNTAS QUE O JOGO PRECISA RESPONDER</div>
+        <div class="check-item checked">
+          <div class="check-box">✓</div>
+          <span class="check-text">O jogador se sente responsável pelas internações que realiza?</span>
+        </div>
+        <div class="check-item checked">
+          <div class="check-box">✓</div>
+          <span class="check-text">Os decretos mutáveis geram percepção de arbitrariedade — ou apenas de dificuldade de jogo?</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-text">A humanização via dossiê é suficiente para criar conflito moral real?</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-text">O contexto literário (Machado) é percebido pelos jogadores sem familiaridade prévia com a obra?</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-text">O final do jogo provoca reflexão ou apenas alívio de terminar?</span>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="callout-title">🔬 PRÓXIMOS PASSOS NA PESQUISA</span>
+        Após a versão jogável completa, a pesquisa prevê sessões de playtest com grupos de jogadores, coleta de relatos sobre o processo de decisão, e análise comparativa com leitores do conto original. O jogo será tanto produto quanto instrumento de coleta de dados.
+      </div>
+
+      <div class="result-box">
+        <span class="result-title">▸ RESUMO: POR QUE ESTE JOGO EXISTE</span>
+        <div class="result-line success">✅ Machado de Assis escreveu sobre o poder que se autolegitima</div>
+        <div class="result-line success">✅ Papers, Please provou que jogos podem produzir culpa sistêmica</div>
+        <div class="result-line success">✅ A pesquisa une os dois para criar experiência de mediação literária ativa</div>
+        <div class="result-line warn">⚠️ O objetivo não é adaptar a obra — é usá-la como espelho</div>
+        <div class="result-line warn indent-1">→ O jogador não lê O Alienista. O jogador se torna O Alienista.</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ SIDEBAR DIREITA ══ -->
+  <aside class="sidebar-right">
+
+    <div class="widget">
+      <span class="widget-title">SOBRE O POST</span>
+      <div class="widget-body">
+        <div class="stat-row"><span>Data</span><span class="stat-val" style="font-size:7px;">Abr 2026</span></div>
+        <div class="stat-row"><span>Número</span><span class="stat-val">#005</span></div>
+        <div class="stat-row"><span>Tag</span><span class="stat-val" style="font-size:7px;">PESQUISA</span></div>
+        <div class="stat-row"><span>Leitura</span><span class="stat-val" style="font-size:7px;">~10 min</span></div>
+        <div class="stat-row"><span>❤️ Likes</span><span class="stat-val">0</span></div>
+      </div>
+    </div>
+
+    <div class="widget">
+      <span class="widget-title">PROGRESSO DO PROJETO</span>
+      <div class="widget-body">
+        <div class="progress-label"><span>Game Design</span><span>65%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div>
+        <div class="progress-label"><span>Programação</span><span>50%</span></div>
+        <div class="progress-bar"><div class="progress-fill yellow" style="width:50%"></div></div>
+        <div class="progress-label"><span>Arte / Assets</span><span>30%</span></div>
+        <div class="progress-bar"><div class="progress-fill yellow" style="width:30%"></div></div>
+        <div class="progress-label"><span>Narrativa</span><span>70%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+        <div class="progress-label"><span>Pesquisa doc.</span><span>40%</span></div>
+        <div class="progress-bar"><div class="progress-fill red" style="width:40%"></div></div>
+      </div>
+    </div>
+
+    <div class="widget">
+      <span class="widget-title">REFERÊNCIAS</span>
+      <div class="widget-body" style="padding:10px 12px;">
+        <div class="tip-row"><strong>O Alienista</strong><br>Machado de Assis · 1881</div>
+        <div class="tip-row"><strong>Papers, Please</strong><br>Lucas Pope · 2013</div>
+        <div class="tip-row"><strong>Not Tonight</strong><br>PanicBarn · 2018</div>
+        <div class="tip-row"><strong>Obra Completa</strong><br>Machado de Assis · Nova Aguilar</div>
+      </div>
+    </div>
+
+    <div class="widget">
+      <span class="widget-title">TAGS</span>
+      <div class="tag-cloud">
+        <span class="tag green">pesquisa</span>
+        <span class="tag">machado</span>
+        <span class="tag red">papers-please</span>
+        <span class="tag">literatura</span>
+        <span class="tag green">godot4</span>
+        <span class="tag">devlog</span>
+        <span class="tag">brasil</span>
+      </div>
+    </div>
+
+    <div class="widget">
+      <span class="widget-title">NAVEGAÇÃO</span>
+      <div class="link-list">
+        <a href="004-sistema-sanidade.html" class="link-item">🎮 #004 — Sistema de Sanidade</a>
+        <a href="../index.html" class="link-item">🏠 Blog</a>
+      </div>
+    </div>
+
+  </aside>
+
+</div>
+
+<script src="../js/article.js"></script>
+</body>
+</html>

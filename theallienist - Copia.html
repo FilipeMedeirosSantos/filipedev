@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pai Contra Mãe - O Jogo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #1c1512; /* Marrom bem escuro/preto */
+            --text-main: #d4c3b3; /* Cor de pergaminho */
+            --highlight: #8b261d; /* Vermelho escuro/sangue seco */
+            --border-color: #5c4a3d; /* Marrom madeira */
+            --panel-bg: #2b211c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'VT323', monospace;
+            font-size: 22px;
+            line-height: 1.5;
+            background-image: linear-gradient(rgba(28, 21, 18, 0.9), rgba(28, 21, 18, 0.9)), url('data:image/svg+xml;utf8,<svg width="4" height="4" xmlns="http://www.w3.org/2000/svg"><rect width="2" height="2" fill="%232b211c"/></svg>');
+        }
+
+        h1, h2, h3, .pixel-font {
+            font-family: 'Press Start 2P', cursive;
+            text-transform: uppercase;
+        }
+
+        /* Navegação */
+        nav {
+            background-color: var(--panel-bg);
+            border-bottom: 4px solid var(--border-color);
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 12px;
+            margin: 0 15px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--highlight);
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        /* Estilo das "Páginas" */
+        .page {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Caixas de Texto (Estilo RPG) */
+        .rpg-box {
+            background-color: var(--panel-bg);
+            border: 4px solid var(--border-color);
+            box-shadow: 4px 4px 0px #000;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        /* Tipografia */
+        h1 {
+            font-size: 36px;
+            color: var(--highlight);
+            text-shadow: 2px 2px 0px #000;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #fff;
+            border-bottom: 2px dashed var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 26px;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* Botões */
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background-color: var(--border-color);
+            color: #fff;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 12px;
+            padding: 15px 20px;
+            border: 4px solid var(--text-main);
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 4px 4px 0px #000;
+            transition: all 0.1s;
+        }
+
+        .btn:hover {
+            background-color: var(--highlight);
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        .btn.primary {
+            background-color: var(--highlight);
+            border-color: #fff;
+        }
+
+        /* Galeria de Imagens (Placeholders) */
+        .gallery {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .pixel-img {
+            width: 100%;
+            height: 150px;
+            background-color: #000;
+            border: 4px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+            color: #555;
+            image-rendering: pixelated; /* Garante que imagens reais fiquem pixeladas */
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 4px solid var(--border-color);
+            margin-top: 50px;
+            font-size: 18px;
+            background-color: var(--panel-bg);
+        }
+
+        .bug-btn {
+            color: var(--highlight);
+            text-decoration: underline;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a onclick="navigate('home')" id="nav-home" class="active">INÍCIO</a>
+        <a onclick="navigate('download')" id="nav-download">DOWNLOAD</a>
+        <a onclick="navigate('pesquisa')" id="nav-pesquisa">PESQUISA</a>
+        <a onclick="navigate('material')" id="nav-material">MATERIAL</a>
+        <a onclick="navigate('tutoriais')" id="nav-tutoriais">TUTORIAIS</a>
+    </nav>
+
+    <div class="container">
+        
+        <div id="page-home" class="page active">
+            <div class="rpg-box" style="text-align: center; padding: 40px 20px;">
+                <h1>PAI CONTRA MÃE</h1>
+                <div class="subtitle">Vivencie a História.<br>Sinta o Peso das Escolhas.</div>
+                <p style="font-size: 24px; max-width: 700px; margin: 0 auto 20px auto;">
+                    Pai Contra Mãe é uma experiência narrativa que transporta você para o Rio de Janeiro do século XIX, recriando o impactante conto de Machado de Assis. Mais que um jogo, é uma imersão em um dos períodos mais complexos da história brasileira, colocando o poder da decisão em suas mãos.
+                </p>
+                <p style="font-size: 24px; max-width: 700px; margin: 0 auto;">
+                    Assuma o papel de Cândido Neves, um caçador de escravos fugidos, e enfrente os dilemas brutais de um homem encurralado pela miséria. Suas escolhas definem a história, alterando o destino dos personagens e levando a múltiplos finais possíveis.
+                </p>
+                <div class="btn-container">
+                    <button class="btn primary" onclick="navigate('download')">BAIXAR AGORA</button>
+                    <button class="btn" onclick="document.getElementById('sobre').scrollIntoView({behavior: 'smooth'})">SAIBA MAIS</button>
+                </div>
+            </div>
+
+            <div id="sobre" class="rpg-box">
+                <h2>SOBRE O JOGO</h2>
+                <p>Baseado no conto "Pai contra Mãe" de Machado de Assis, este jogo leva você a vivenciar os dilemas morais de Cândido Neves, um caçador de escravos no Rio Imperial. Explore as ruas da cidade, tome decisões difíceis e enfrente as consequências de suas ações em uma narrativa rica e emocionante.</p>
+            </div>
+
+            <div class="rpg-box">
+                <h2>OBJETIVO EDUCACIONAL</h2>
+                <p>Desenvolvido para uso em sala de aula, o jogo estimula a reflexão sobre a escravidão, relações de poder e dilemas éticos na sociedade brasileira do século XIX. Uma ferramenta pedagógica inovadora para discutir literatura, história e valores morais.</p>
+                <div class="btn-container" style="justify-content: flex-start;">
+                    <button class="btn" onclick="navigate('material')">VER MATERIAL DE APOIO</button>
+                </div>
+            </div>
+
+            <div class="rpg-box">
+                <h2>COMO JOGAR</h2>
+                <p>Tomando decisões que afetam a narrativa, você experimentará diferentes perspectivas e consequências de suas escolhas, com múltiplos finais possíveis. Suas ações determinam o destino dos personagens e o desfecho da história.</p>
+                <div class="btn-container" style="justify-content: flex-start;">
+                    <button class="btn" onclick="navigate('tutoriais')">VER TUTORIAIS</button>
+                </div>
+            </div>
+
+            <div class="rpg-box">
+                <h2>IMAGENS DO JOGO</h2>
+                <div class="gallery">
+                    <div class="pixel-img">[ SCREENSHOT 1 ]</div>
+                    <div class="pixel-img">[ SCREENSHOT 2 ]</div>
+                    <div class="pixel-img">[ SCREENSHOT 3 ]</div>
+                </div>
+            </div>
+
+            <div class="btn-container" style="margin-top: 40px; margin-bottom: 20px;">
+                <button class="btn primary" onclick="navigate('download')">BAIXAR VERSÃO COMPLETA</button>
+                <button class="btn" onclick="navigate('pesquisa')">PARTICIPAR DA PESQUISA</button>
+            </div>
+        </div>
+
+        <div id="page-download" class="page">
+            <div class="rpg-box">
+                <h2>DOWNLOAD DO JOGO</h2>
+                <p>Escolha a versão compatível com o seu sistema operacional para começar a sua jornada pelas ruas do Rio de Janeiro Imperial.</p>
+                <br>
+                <div class="btn-container" style="justify-content: flex-start;">
+                    <button class="btn primary">BAIXAR PARA WINDOWS</button>
+                    <button class="btn">BAIXAR PARA LINUX</button>
+                    <button class="btn">BAIXAR PARA MAC</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-pesquisa" class="page">
+            <div class="rpg-box">
+                <h2>PESQUISA ACADÊMICA</h2>
+                <p>Sua opinião é fundamental! Como este é um projeto acadêmico e educativo, o seu feedback após jogar nos ajuda a avaliar a eficácia do jogo como ferramenta de ensino.</p>
+                <br>
+                <button class="btn primary">ACESSAR FORMULÁRIO DE PESQUISA</button>
+            </div>
+        </div>
+
+        <div id="page-material" class="page">
+            <div class="rpg-box">
+                <h2>MATERIAL PARA PROFESSORES</h2>
+                <p>Documentos, planos de aula e guias de discussão estruturados para professores aplicarem o jogo "Pai Contra Mãe" em turmas do Ensino Médio e Superior.</p>
+                <ul style="margin-left: 20px; margin-top: 15px;">
+                    <li>Guia de Análise Literária - Machado de Assis</li>
+                    <li>Contexto Histórico: O Rio de Janeiro no Século XIX</li>
+                    <li>Roteiro de Debates para Sala de Aula</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="page-tutoriais" class="page">
+            <div class="rpg-box">
+                <h2>TUTORIAIS DE JOGABILIDADE</h2>
+                <p>Aprenda os controles básicos e como o sistema de escolhas e consequências funciona dentro da narrativa.</p>
+                <br>
+                <p>> <strong>Mouse:</strong> Interagir com o cenário e selecionar diálogos.</p>
+                <p>> <strong>Inventário:</strong> Gerencie os escassos recursos de Cândido Neves.</p>
+                <p>> <strong>Atenção:</strong> Cada escolha consome tempo, e o prazo do aluguel não perdoa.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Jogo educativo desenvolvido para fins acadêmicos<br>Baseado no conto "Pai contra Mãe" de Machado de Assis</p>
+        <p style="margin-top: 10px; font-size: 16px; color: #888;">Todos os direitos reservados &copy; 2025</p>
+        <span class="bug-btn" onclick="alert('Sistema de reporte de bug abrirá aqui.')">RELATAR BUG</span>
+    </footer>
+
+    <script>
+        function navigate(pageId) {
+            // Esconde todas as páginas
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Remove a classe active de todos os links do menu
+            const links = document.querySelectorAll('nav a');
+            links.forEach(link => link.classList.remove('active'));
+
+            // Mostra a página selecionada
+            document.getElementById('page-' + pageId).classList.add('active');
+
+            // Adiciona a classe active no link correspondente do menu
+            document.getElementById('nav-' + pageId).classList.add('active');
+
+            // Sobe a tela para o topo
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>

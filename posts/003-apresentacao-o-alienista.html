@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#006 — O Alienista: Apresentação do Projeto · FILIPE DEV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/shared.css">
+    <link rel="stylesheet" href="../css/article.css">
+</head>
+
+<body>
+
+    <div id="reading-progress"></div>
+
+    <div class="layout">
+
+        <aside class="sidebar-left">
+
+            <div class="sidebar-logo">
+                FILIPE DEV
+                <span class="logo-sub">Devlog — O Alienista</span>
+                <span class="logo-tag">DESIGN</span>
+            </div>
+
+            <a href="../index.html" class="back-btn">← VOLTAR AO BLOG</a>
+
+            <span class="nav-section-title">▸ NESTE ARTIGO</span>
+
+            <nav class="nav-section">
+                <a href="#secao-intro" class="nav-btn active">
+                    <span class="nav-num">01</span>A Premissa
+                </a>
+                <a href="#secao-mecanicas" class="nav-btn">
+                    <span class="nav-num">02</span>Mecânicas Core
+                </a>
+                <a href="#secao-roadmap" class="nav-btn">
+                    <span class="nav-num">03</span>Roadmap
+                </a>
+            </nav>
+
+        </aside>
+
+        <main class="main-content">
+
+            <div class="content-header">
+                <h1>O Alienista: Apresentação do Projeto</h1>
+                <a href="../index.html" class="breadcrumb">← index</a>
+            </div>
+
+            <div class="article-hero">
+                <img src="../img/casaverteste.png" alt="Conceito da Fachada da Casa Verde em Pixel Art" style="width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 16 / 9; border-radius: 4px;">
+            </div>
+
+            <section class="guide-section" id="secao-intro">
+                <span class="section-badge">▸ 01 — INTRODUÇÃO</span>
+                <h2 class="section-title">A Premissa do Jogo</h2>
+
+                <p class="section-intro">
+                    Bem-vindos ao diário de desenvolvimento de <strong>O Alienista</strong>, um jogo focado em narrativa, exploração e gestão de sanidade mental, sendo desenvolvido na Godot 4.
+                </p>
+
+                <div class="obra-card">
+                    <div class="obra-num">📖</div>
+                    <div class="obra-content">
+                        <div class="obra-title">O Alienista</div>
+                        <div class="obra-author">Machado de Assis · 1882 · Conto / Novela</div>
+                        <div class="obra-desc">A obra que inspira o jogo. Acompanhamos o Dr. Simão Bacamarte e sua fundação da Casa Verde, questionando a fina linha entre a loucura e a razão.</div>
+                    </div>
+                </div>
+
+                <div class="callout info">
+                    <span class="callout-title">✅ OBJETIVO DO PROJETO</span> Traduzir a ironia e a crítica social da obra de Machado de Assis para um ambiente interativo em pixel art, onde as escolhas do jogador afetam o destino da cidade de Itaguaí.
+                </div>
+            </section>
+
+            <section class="guide-section" id="secao-mecanicas">
+                <span class="section-badge">▸ 02 — GAME DESIGN</span>
+                <h2 class="section-title">Mecânicas Principais</h2>
+
+                <p class="section-intro">
+                    O loop de gameplay é dividido entre diagnosticar os cidadãos e gerenciar a própria sanidade e reputação do Doutor Bacamarte.
+                </p>
+
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-num">🧠</div>
+                        <div class="step-title">Sistema de Sanidade Dinâmico</div>
+                    </div>
+                    <div class="step-body">
+                        A sanidade não é apenas uma barra de vida, mas uma lente através da qual o jogador vê o mundo:
+                        <ul>
+                            <li>Diálogos mudam dependendo do nível de sanidade.</li>
+                            <li>Alucinações visuais começam a aparecer no mapa.</li>
+                            <li>Pacientes podem ser internados injustamente se você estiver confuso.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flow-box">
+                    <div class="flow-step">
+                        <span class="flow-arrow">1</span>
+                        <span class="flow-actor">Jogador</span>
+                        <span class="flow-action">Avalia um cidadão de Itaguaí</span>
+                    </div>
+                    <div class="flow-step">
+                        <span class="flow-arrow">→</span>
+                        <span class="flow-actor">Sistema</span>
+                        <span class="flow-action">Calcula a "Loucura" baseada em traços</span>
+                        <span class="flow-condition">[Se diagnóstico for controverso]</span>
+                    </div>
+                    <div class="flow-step">
+                        <span class="flow-arrow">→</span>
+                        <span class="flow-actor">Casa Verde</span>
+                        <span class="flow-action">Recebe novo interno</span>
+                        <span class="flow-result-yes">→ Revolta da população aumenta</span>
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="guide-section" id="secao-roadmap">
+                <span class="section-badge">▸ 03 — PRÓXIMOS PASSOS</span>
+                <h2 class="section-title">Roadmap Inicial</h2>
+
+                <p class="section-intro">
+                    Muito trabalho pela frente. Aqui estão os marcos principais do desenvolvimento da versão Alpha.
+                </p>
+
+                <div class="checklist">
+                    <div class="checklist-header">▸ ALPHA MILESTONES</div>
+                    <div class="check-item checked">
+                        <div class="check-box">✓</div>
+                        <span class="check-text">Estrutura base da Engine (Godot 4)</span>
+                    </div>
+                    <div class="check-item checked">
+                        <div class="check-box">✓</div>
+                        <span class="check-text">Tilesets de Itaguaí (Centro Histórico)</span>
+                    </div>
+                    <div class="check-item">
+                        <div class="check-box"></div>
+                        <span class="check-text">Lógica do Medidor de Sanidade</span>
+                    </div>
+                    <div class="check-item">
+                        <div class="check-box"></div>
+                        <span class="check-text">Sistema de Diálogos Ramificados</span>
+                    </div>
+                    <div class="check-item">
+                        <div class="check-box"></div>
+                        <span class="check-text">Interface da Casa Verde</span>
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+
+        <aside class="sidebar-right">
+
+            <div class="widget">
+                <span class="widget-title">SOBRE O POST</span>
+                <div class="widget-body">
+                    <div class="stat-row"><span>Data</span><span class="stat-val" style="font-size:7px;">02 Abr 2026</span></div>
+                    <div class="stat-row"><span>Número</span><span class="stat-val">#006</span></div>
+                    <div class="stat-row"><span>Tag</span><span class="stat-val" style="font-size:7px;">DESIGN</span></div>
+                    <div class="stat-row"><span>Leitura</span><span class="stat-val" style="font-size:7px;">~4 min</span></div>
+                    <div class="stat-row"><span>❤️ Likes</span><span class="stat-val">0</span></div>
+                </div>
+            </div>
+
+            <div class="widget">
+                <span class="widget-title">PROGRESSO DO JOGO</span>
+                <div class="widget-body">
+                    <div class="progress-label"><span>Engine Core</span><span>90%</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width:90%"></div>
+                    </div>
+
+                    <div class="progress-label"><span>Arte / Tiles</span><span>50%</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill yellow" style="width:50%"></div>
+                    </div>
+
+                    <div class="progress-label"><span>Sistemas</span><span>15%</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill red" style="width:15%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget">
+                <span class="widget-title">TAGS</span>
+                <div class="tag-cloud">
+                    <span class="tag green">design</span>
+                    <span class="tag">pitch</span>
+                    <span class="tag">godot4</span>
+                </div>
+            </div>
+
+            <div class="widget">
+                <span class="widget-title">NAVEGAÇÃO</span>
+                <div class="link-list">
+                    <a href="005-meu-titulo.html" class="link-item">🎮 #005 — Post anterior</a>
+                    <a href="../index.html" class="link-item">🏠 Blog</a>
+                </div>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <script src="../js/article.js"></script>
+</body>
+
+</html>

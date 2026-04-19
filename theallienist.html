@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FILIPE DEV — Game Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg2: #f5f5f0;
+    --border: #222;
+    --accent: #e8c84a;
+    --accent2: #4a7c3f;
+    --accent3: #c0392b;
+    --text: #1a1a1a;
+    --text-muted: #666;
+    --sidebar-bg: #f0ede0;
+    --pixel: 3px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Press Start 2P', monospace;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 10px;
+    line-height: 1.8;
+    image-rendering: pixelated;
+  }
+
+  /* ── LAYOUT GLOBAL ── */
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr 280px;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 100vh;
+    border-left: 3px solid var(--border);
+    border-right: 3px solid var(--border);
+  }
+
+  /* ── SIDEBAR ESQUERDA (NAVEGAÇÃO) ── */
+  .sidebar-left {
+    background: var(--sidebar-bg);
+    border-right: 3px solid var(--border);
+    padding: 32px 16px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .nav-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background: var(--bg);
+    border: 3px solid var(--border);
+    box-shadow: 4px 4px 0 var(--border);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: var(--text);
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.08s, box-shadow 0.08s;
+  }
+
+  .nav-btn:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--border);
+    background: var(--accent);
+  }
+
+  .nav-btn.active {
+    background: var(--accent2);
+    color: #fff;
+  }
+
+  .pixel-divider {
+    height: 3px;
+    background: repeating-linear-gradient(90deg, var(--border) 0, var(--border) 6px, transparent 6px, transparent 12px);
+    margin: 10px 0;
+  }
+
+  /* ── CONTEÚDO CENTRAL ── */
+  .main-feed {
+    padding: 30px;
+    background: var(--bg);
+    overflow-y: auto;
+  }
+
+  .game-hero {
+    background: #000;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: 4px solid var(--border);
+    box-shadow: 6px 6px 0 var(--border);
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  /* ── SIDEBAR DIREITA (INFO) ── */
+  .sidebar-right {
+    background: var(--bg2);
+    border-left: 3px solid var(--border);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .widget {
+    background: var(--bg);
+    border: 3px solid var(--border);
+    box-shadow: 4px 4px 0 var(--border);
+    padding: 16px;
+  }
+
+  .widget-title {
+    font-size: 8px;
+    color: #fff;
+    background: var(--border);
+    margin: -16px -16px 12px -16px;
+    padding: 10px;
+    display: block;
+  }
+
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 80px 1fr 240px; }
+    .nav-btn span { display: none; } /* Esconde texto em telas menores */
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar-left">
+    <div style="text-align: center; margin-bottom: 10px;">
+      <div style="width: 80px; height: 80px; background: #d4a574; border: 4px solid var(--border); margin: 0 auto 10px; box-shadow: 4px 4px 0 var(--border);"></div>
+      <div style="font-size: 9px;">FILIPE DEV</div>
+    </div>
+
+    <div class="pixel-divider"></div>
+
+    <nav class="nav-section">
+      <a href="#" class="nav-btn active">🏠 <span>Início</span></a>
+      <a href="#" class="nav-btn">💾 <span>Download</span></a>
+      <a href="#" class="nav-btn">🔍 <span>Pesquisa</span></a>
+      <a href="#" class="nav-btn">📚 <span>Material</span></a>
+      <a href="#" class="nav-btn">📽️ <span>Tutoriais</span></a>
+    </nav>
+
+    <div class="pixel-divider" style="margin-top: auto;"></div>
+    <div style="font-size: 7px; color: #888; text-align: center;">v1.0.4 - 2026</div>
+  </aside>
+
+  <main class="main-feed">
+    <header style="margin-bottom: 30px;">
+      <h1 style="font-size: 20px; color: var(--accent3);">PROJETO: O ALIENISTA</h1>
+      <p style="color: var(--text-muted); margin-top: 10px;">Uma adaptação RPG da obra de Machado de Assis.</p>
+    </header>
+
+    <div class="game-hero">
+      <div style="text-align: center; color: #fff;">
+        <p style="font-size: 12px;">[ PLAYER DO JOGO ]</p>
+        <button style="margin-top: 20px; padding: 15px; font-family: 'Press Start 2P'; cursor: pointer; background: var(--accent2); color: white; border: 3px solid white;">CARREGAR GODOT</button>
+      </div>
+    </div>
+
+    <div class="widget">
+      <h2 style="font-size: 11px; margin-bottom: 15px; color: var(--accent2);">Sobre a Obra</h2>
+      <p style="font-size: 9px; line-height: 2;">
+        Nesta experiência narrativa, você assume o papel de Simão Bacamarte. 
+        Explore Itaguaí, gerencie a Casa Verde e decida quem é verdadeiramente são em um mundo de pixels e prosa clássica.
+      </p>
+    </div>
+  </main>
+
+  <aside class="sidebar-right">
+    <div class="widget">
+      <span class="widget-title">ESTADO DO DEV</span>
+      <div style="font-size: 8px;">
+        <div style="margin-bottom: 10px;">Progresso: 45%</div>
+        <div style="height: 12px; background: #ddd; border: 2px solid var(--border);">
+          <div style="width: 45%; height: 100%; background: var(--accent2);"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="widget">
+      <span class="widget-title">LINKS ÚTEIS</span>
+      <ul style="list-style: none; font-size: 7px;">
+        <li style="margin-bottom: 8px;"><a href="#" style="color: var(--accent3);">Reportar Bug</a></li>
+        <li style="margin-bottom: 8px;"><a href="#" style="color: var(--accent3);">Documentação GDD</a></li>
+        <li><a href="#" style="color: var(--accent3);">Créditos</a></li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+</body>
+</html>

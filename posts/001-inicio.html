@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#001 — O Início: Por que "O Alienista"? · FILIPE DEV</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/shared.css">
+<link rel="stylesheet" href="../css/article.css">
+</head>
+<body>
+
+<!-- Barra de leitura -->
+<div id="reading-progress"></div>
+
+<div class="layout">
+
+  <!-- ══ SIDEBAR ESQUERDA ══ -->
+  <aside class="sidebar-left">
+
+    <div class="sidebar-logo">
+      FILIPE DEV
+      <span class="logo-sub">Devlog — O Alienista</span>
+      <span class="logo-tag">DEVLOG</span>
+    </div>
+
+    <a href="../index.html" class="back-btn">← VOLTAR AO BLOG</a>
+
+    <span class="nav-section-title">▸ NESTE ARTIGO</span>
+
+    <nav class="nav-section">
+      <a href="#introducao" class="nav-btn active">
+        <span class="nav-num">01</span>Introdução
+      </a>
+      <a href="#obra-original" class="nav-btn">
+        <span class="nav-num">02</span>A Obra Original
+      </a>
+      <a href="#por-que-jogo" class="nav-btn">
+        <span class="nav-num">03</span>Por que um Jogo?
+      </a>
+      <a href="#estetica" class="nav-btn">
+        <span class="nav-num">04</span>A Escolha Estética
+      </a>
+      <a href="#plano" class="nav-btn">
+        <span class="nav-num">05</span>O Plano do Devlog
+      </a>
+    </nav>
+
+  </aside>
+
+  <!-- ══ CONTEÚDO PRINCIPAL ══ -->
+  <main class="main-content">
+
+    <!-- Header fixo -->
+    <div class="content-header">
+      <h1>O Início: Por que "O Alienista"?</h1>
+      <a href="../index.html" class="breadcrumb">← index</a>
+    </div>
+
+    <!-- Cena visual do artigo -->
+    <div class="article-hero">
+      <div class="scene-night" style="width:100%;height:100%;">
+        <div class="stars"></div>
+        <div class="moon"></div>
+        <div class="mountain"></div>
+        <div class="water"><div class="reflection"></div></div>
+      </div>
+    </div>
+
+    <!-- ── INTRODUÇÃO ── -->
+    <section class="guide-section" id="introducao">
+      <span class="section-badge">▸ 01 — INTRODUÇÃO</span>
+      <h2 class="section-title">Como tudo começou</h2>
+
+      <p class="section-intro">
+        Sempre fui fascinado pela obra de Machado de Assis. A ideia de transformar "O Alienista" em um jogo rondou minha mente durante meses, e este devlog é o documento vivo dessa jornada — do primeiro commit ao jogo final.
+      </p>
+
+      <div class="callout info">
+        <span class="callout-title">ℹ️ SOBRE ESTE DEVLOG</span>
+        Este blog documenta o desenvolvimento de um RPG narrativo em Godot 4 baseado em "O Alienista" de Machado de Assis. Cada post cobre uma área específica: código, arte, design e reflexões.
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">▸</div>
+          <div class="step-title">A Questão Central</div>
+        </div>
+        <div class="step-body">
+          A linha tênue entre a razão e a loucura é um tema perfeito para uma narrativa interativa. Quem decide o que é sanidade? O médico, a sociedade, ou o próprio paciente? Em um jogo, essa questão pode ser colocada diretamente nas mãos do jogador.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── OBRA ORIGINAL ── -->
+    <section class="guide-section" id="obra-original">
+      <span class="section-badge">▸ 02 — FONTE LITERÁRIA</span>
+      <h2 class="section-title">A Obra Original</h2>
+
+      <p class="section-intro">
+        "O Alienista" (1882) é um conto de Machado de Assis publicado originalmente na Gazeta de Notícias. É uma obra curta, densa e perfeitamente estruturada — características que a tornam ideal para adaptação.
+      </p>
+
+      <div class="obra-card">
+        <div class="obra-num">📖</div>
+        <div class="obra-content">
+          <div class="obra-title">O Alienista</div>
+          <div class="obra-author">Machado de Assis · 1882 · Domínio Público</div>
+          <div class="obra-desc">Simão Bacamarte, médico e cientista, funda a Casa Verde em Itaguaí para tratar os loucos da cidade. Gradualmente, ele aumenta seus critérios de loucura até internar metade da população — e eventualmente a si mesmo.</div>
+        </div>
+      </div>
+
+      <div class="px-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Na obra original</th>
+              <th>Adaptação no jogo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Protagonista</td>
+              <td>Simão Bacamarte</td>
+              <td>Controlado pelo jogador</td>
+            </tr>
+            <tr>
+              <td>Cidade</td>
+              <td>Itaguaí (narrada)</td>
+              <td>Mapa explorável em pixel art</td>
+            </tr>
+            <tr>
+              <td>Diagnósticos</td>
+              <td>Decisão do narrador</td>
+              <td>Escolhas do jogador com consequências</td>
+            </tr>
+            <tr>
+              <td>Final</td>
+              <td>Bacamarte se interna</td>
+              <td>Múltiplos finais possíveis</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── POR QUE UM JOGO ── -->
+    <section class="guide-section" id="por-que-jogo">
+      <span class="section-badge">▸ 03 — JUSTIFICATIVA</span>
+      <h2 class="section-title">Por que um Jogo?</h2>
+
+      <p class="section-intro">
+        Livros e filmes são experiências passivas. Jogos são experiências ativas. Ao colocar o jogador no lugar de Bacamarte, forçamos uma cumplicidade que nenhuma outra mídia consegue.
+      </p>
+
+      <div class="formula-box">
+        Leitura Passiva
+        <span class="f-arrow"> → </span>
+        Empatia
+        <span class="f-arrow"> ≠ </span>
+        Jogo Interativo
+        <span class="f-arrow"> → </span>
+        <span class="f-up">Cumplicidade</span>
+        <span class="f-label">Quando você assina um diagnóstico, a responsabilidade é sua — não do autor.</span>
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">1</div>
+          <div class="step-title">O Jogador como Alienista</div>
+        </div>
+        <div class="step-body">
+          Ao assumir o papel de Bacamarte, o jogador é forçado a tomar as mesmas decisões problemáticas que o protagonista. Você não apenas observa a injustiça — você é o instrumento dela.
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num">2</div>
+          <div class="step-title">Consequências em Cadeia</div>
+        </div>
+        <div class="step-body">
+          Cada diagnóstico afeta o mundo de Itaguaí. Internar o ferreiro significa que a cidade perde seus serviços. Libertar a costureira muda as relações sociais. O mundo responde às suas escolhas.
+        </div>
+      </div>
+
+      <div class="result-box">
+        <span class="result-title">▸ HIPÓTESE DO PROJETO</span>
+        <div class="result-line">Um jogo pode explorar a ambiguidade moral melhor que qualquer outro meio...</div>
+        <div class="result-line indent-1">→ porque o jogador toma as decisões</div>
+        <div class="result-line indent-1">→ porque as consequências são imediatas e visíveis</div>
+        <div class="result-line success indent-1">→ porque a culpa é literalmente do jogador</div>
+        <div class="result-line warn">Isso é o que torna "O Alienista" a obra perfeita para um RPG narrativo.</div>
+      </div>
+    </section>
+
+    <!-- ── ESTÉTICA ── -->
+    <section class="guide-section" id="estetica">
+      <span class="section-badge">▸ 04 — ESTÉTICA</span>
+      <h2 class="section-title">A Escolha do Pixel Art</h2>
+
+      <p class="section-intro">
+        A escolha do pixel art não foi aleatória. Existe uma intenção clara por trás da decisão de representar o Brasil do século XIX em sprites de 16x16 pixels.
+      </p>
+
+      <div class="callout warn">
+        <span class="callout-title">⚠️ UMA ESCOLHA CONSCIENTE</span>
+        O pixel art não é apenas uma limitação técnica ou nostalgia. É um filtro estético que transforma o histórico em memória — como se a história fosse vista através de um vidro fosco do tempo.
+      </div>
+
+      <div class="px-table-wrap">
+        <table>
+          <thead>
+            <tr><th>Fator</th><th>Motivo</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Abstração visual</td><td>Permite focar na narrativa, não no realismo</td></tr>
+            <tr><td>Textura retrô</td><td>Evoca memória e distância temporal</td></tr>
+            <tr><td>Viabilidade solo</td><td>Um dev pode criar sprites 16x16 consistentes</td></tr>
+            <tr><td>Paleta limitada</td><td>Força coerência visual em toda a produção</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── PLANO ── -->
+    <section class="guide-section" id="plano">
+      <span class="section-badge">▸ 05 — ROADMAP</span>
+      <h2 class="section-title">O Plano do Devlog</h2>
+
+      <p class="section-intro">
+        Este devlog vai documentar tudo: o código, os sprites, os erros e as vitórias. Cada post cobre uma área específica do desenvolvimento.
+      </p>
+
+      <div class="checklist">
+        <div class="checklist-header">▸ ROADMAP DO PROJETO</div>
+        <div class="check-item checked">
+          <div class="check-box">✓</div>
+          <span class="check-text">Definir conceito e obra de referência</span>
+        </div>
+        <div class="check-item checked">
+          <div class="check-box">✓</div>
+          <span class="check-text">Escolher engine (Godot 4) e arquitetura</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-text">Criar tileset base de Itaguaí (32 tiles)</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-text">Implementar sistema de sanidade</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-text">Criar NPCs principais (10 personagens)</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-text">Sistema de diálogos com Dialogic 2</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-text">Protótipo jogável v0.1</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-text">Demo pública no itch.io</span>
+        </div>
+      </div>
+
+      <div class="result-box">
+        <span class="result-title">✅ CONCLUSÃO DO POST #001</span>
+        <div class="result-line success">Este devlog documenta uma aposta criativa.</div>
+        <div class="result-line indent-1">→ Uma obra de 1882 transformada em jogo indie</div>
+        <div class="result-line indent-1">→ Pixel art como escolha estética consciente</div>
+        <div class="result-line indent-1">→ Um desenvolvedor solo, uma cidade inteira</div>
+        <div class="result-line warn">Bem-vindo ao início de O Alienista — o jogo.</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ SIDEBAR DIREITA ══ -->
+  <aside class="sidebar-right">
+
+    <div class="widget">
+      <span class="widget-title">SOBRE O POST</span>
+      <div class="widget-body">
+        <div class="stat-row"><span>Data</span><span class="stat-val" style="font-size:7px;">10 Jan 2026</span></div>
+        <div class="stat-row"><span>Número</span><span class="stat-val">#001</span></div>
+        <div class="stat-row"><span>Tag</span><span class="stat-val" style="font-size:7px;">DEVLOG</span></div>
+        <div class="stat-row"><span>Leitura</span><span class="stat-val" style="font-size:7px;">~4 min</span></div>
+        <div class="stat-row"><span>❤️ Likes</span><span class="stat-val">42</span></div>
+      </div>
+    </div>
+
+    <div class="widget">
+      <span class="widget-title">TEMAS DO POST</span>
+      <div class="tag-cloud">
+        <span class="tag">machado</span>
+        <span class="tag">literatura</span>
+        <span class="tag green">devlog</span>
+        <span class="tag">pixel art</span>
+        <span class="tag green">godot4</span>
+        <span class="tag">indie</span>
+      </div>
+    </div>
+
+    <div class="widget">
+      <span class="widget-title">CHECKLIST DO DEV</span>
+      <div class="widget-body" style="padding:10px 12px;">
+        <div class="mini-check done">
+          <div class="mini-dot">✓</div>
+          <span>Conceito definido</span>
+        </div>
+        <div class="mini-check done">
+          <div class="mini-dot">✓</div>
+          <span>Obra lida (3x)</span>
+        </div>
+        <div class="mini-check">
+          <div class="mini-dot"></div>
+          <span>Referências visuais</span>
+        </div>
+        <div class="mini-check">
+          <div class="mini-dot"></div>
+          <span>GDD inicial</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="widget">
+      <span class="widget-title">LINKS INTERNOS</span>
+      <div class="link-list">
+        <a href="002-engine.html" class="link-item">⚙️ #002 — Engine</a>
+        <a href="003-tiles.html" class="link-item">🎨 #003 — Tiles</a>
+        <a href="004-sistema-sanidade.html" class="link-item">🎮 #004 — Sanidade</a>
+        <a href="../index.html" class="link-item">🏠 Voltar ao Blog</a>
+      </div>
+    </div>
+
+  </aside>
+
+</div>
+
+<script src="../js/article.js"></script>
+
+<!-- Cenas pixel art inline (reutiliza estilos do index.css) -->
+<style>
+  /* Importar estilos de cena que estão no index.css para uso no hero */
+  .scene-night { width:100%;height:100%;background:linear-gradient(180deg,#0a0e1a 0%,#1a2a4a 60%,#2a1a0a 100%);position:relative;overflow:hidden; }
+  .scene-night .stars::before { content:'· · ·  · · · ·  · ·  · · · ·  · ·  · · ·';position:absolute;top:14px;left:10px;right:10px;font-size:7px;color:#fff;letter-spacing:6px;opacity:0.8; }
+  .scene-night .moon { position:absolute;right:40px;top:18px;width:24px;height:24px;background:var(--accent);border:2px solid var(--border); }
+  .scene-night .mountain { position:absolute;bottom:30px;left:0;right:0;height:50px;background:#1a1a3a;clip-path:polygon(0 100%,20% 20%,35% 50%,50% 10%,65% 40%,80% 15%,100% 60%,100% 100%); }
+  .scene-night .water { position:absolute;bottom:0;left:0;right:0;height:32px;background:#0a1a3a;border-top:3px solid #1a3a6a; }
+  .scene-night .reflection { position:absolute;top:6px;left:50%;transform:translateX(-50%);width:20px;height:14px;background:rgba(232,200,74,0.3);border:1px solid rgba(232,200,74,0.5); }
+</style>
+</body>
+</html>

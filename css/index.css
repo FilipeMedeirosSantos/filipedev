@@ -1,0 +1,337 @@
+/* ══════════════════════════════════════════
+   FILIPE DEV — index.css
+   Estilos exclusivos da página de índice/feed
+   ══════════════════════════════════════════ */
+
+/* ── AVATAR (sidebar esquerda do index) ── */
+.avatar-wrap {
+  position: relative;
+  width: 96px;
+  height: 96px;
+}
+.avatar-frame {
+  width: 96px;
+  height: 96px;
+  background: #d4a574;
+  border: 4px solid var(--border);
+  box-shadow: 5px 5px 0 var(--border);
+  image-rendering: pixelated;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pixel-avatar { width: 88px; height: 88px; }
+
+.username {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--text);
+  text-align: center;
+}
+.online-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #4caf50;
+  border: 2px solid var(--border);
+  margin-right: 4px;
+  animation: blink 2s step-end infinite;
+}
+.user-status {
+  font-size: 6.5px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* ── INDEX: NAV BUTTON (tamanho maior) ── */
+.sidebar-left .nav-btn {
+  font-size: 9px;
+}
+.sidebar-left .nav-section {
+  gap: 10px;
+}
+
+/* ── MAIN FEED ── */
+.feed {
+  background: var(--bg);
+  border-right: 3px solid var(--border);
+  padding: 0;
+}
+
+.feed-header {
+  padding: 16px 20px;
+  border-bottom: 3px solid var(--border);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.feed-header h1 {
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+.feed-header .blink-cursor {
+  display: inline-block;
+  width: 10px; height: 14px;
+  background: var(--accent2);
+  vertical-align: middle;
+  margin-left: 4px;
+  animation: blink 1s step-end infinite;
+}
+
+/* ── FILTER TABS ── */
+.filter-tabs {
+  display: flex;
+  border-bottom: 3px solid var(--border);
+}
+.filter-tab {
+  flex: 1;
+  padding: 12px 8px;
+  text-align: center;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  cursor: pointer;
+  background: var(--bg2);
+  border: none;
+  border-right: 2px solid var(--border);
+  color: var(--text-muted);
+  transition: background 0.1s;
+}
+.filter-tab:last-child { border-right: none; }
+.filter-tab.active {
+  background: var(--accent);
+  color: var(--text);
+}
+.filter-tab:hover:not(.active) { background: #eee; }
+
+/* ── POST CARD ── */
+.post-card {
+  border-bottom: 3px solid var(--border);
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.1s;
+  overflow: hidden;
+}
+.post-card:hover { background: #fffdf0; }
+.post-card:last-child { border-bottom: none; }
+
+/* Mini cena pixel no topo do card */
+.card-scene {
+  height: 80px;
+  border-bottom: 3px solid var(--border);
+  overflow: hidden;
+  position: relative;
+  background: #0a0e1a;
+}
+
+/* ── PIXEL SCENES ── */
+/* Cena noturna */
+.scene-night {
+  width: 100%; height: 100%;
+  background: linear-gradient(180deg, #0a0e1a 0%, #1a2a4a 60%, #2a1a0a 100%);
+  position: relative; overflow: hidden;
+}
+.scene-night .stars::before {
+  content: '· · ·  · · · ·  · ·  · · · ·  · ·  · · ·';
+  position: absolute; top: 8px; left: 10px; right: 10px;
+  font-size: 6px; color: #fff; letter-spacing: 4px; opacity: 0.8;
+}
+.scene-night .moon {
+  position: absolute; right: 30px; top: 12px;
+  width: 18px; height: 18px;
+  background: var(--accent); border: 2px solid var(--border);
+  image-rendering: pixelated;
+}
+.scene-night .mountain {
+  position: absolute; bottom: 20px; left: 0; right: 0; height: 30px;
+  background: #1a1a3a;
+  clip-path: polygon(0 100%, 20% 20%, 35% 50%, 50% 10%, 65% 40%, 80% 15%, 100% 60%, 100% 100%);
+}
+.scene-night .water {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 22px;
+  background: #0a1a3a; border-top: 3px solid #1a3a6a;
+}
+.scene-night .reflection {
+  position: absolute; top: 4px; left: 50%; transform: translateX(-50%);
+  width: 14px; height: 10px;
+  background: rgba(232,200,74,0.3); border: 1px solid rgba(232,200,74,0.5);
+}
+
+/* Cena de código */
+.scene-code {
+  width: 100%; height: 100%;
+  background: #0d1117; font-family: 'Press Start 2P', monospace;
+  font-size: 6.5px; padding: 10px 14px;
+  display: flex; flex-direction: column; gap: 3px; overflow: hidden;
+}
+.scene-code .code-line { line-height: 1.8; }
+.c-keyword { color: #ff7b72; }
+.c-fn      { color: #79c0ff; }
+.c-comment { color: #8b949e; font-style: italic; }
+.c-num     { color: #79c0ff; }
+.c-string  { color: #a5d6ff; }
+
+/* Cena de mapa */
+.scene-map {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 1px; padding: 1px;
+  background: #222; width: 100%; height: 100%;
+}
+.map-tile {
+  image-rendering: pixelated;
+}
+.tile-grass    { background: #4a7c3f; }
+.tile-road     { background: #8a7a5a; }
+.tile-building { background: #c4a882; border: 1px solid #222; }
+.tile-tree     { background: #2d5a1e; }
+.tile-water    { background: #2a5a8a; }
+
+/* Cena de design */
+.scene-design {
+  width: 100%; height: 100%;
+  background: #1a0a2a;
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; padding: 10px;
+}
+.scene-design .d-bar {
+  width: 18px; border: 2px solid var(--border);
+  display: flex; align-items: flex-end; overflow: hidden;
+  flex-shrink: 0;
+}
+.scene-design .d-fill {
+  width: 100%; background: var(--accent);
+}
+.sanity-meter {
+  display: flex; flex-direction: column; gap: 4px; padding: 8px;
+}
+.sanity-label { font-size: 5.5px; color: var(--accent); }
+.sanity-bar {
+  display: flex; gap: 2px;
+}
+.sanity-pip {
+  width: 10px; height: 10px;
+  border: 2px solid var(--border);
+  background: var(--accent2);
+}
+.sanity-pip.empty { background: #333; }
+
+/* Cena padrão (sem cena) */
+.scene-default {
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    #f0ede0, #f0ede0 4px,
+    #e8e4d0 4px, #e8e4d0 8px
+  );
+  display: flex; align-items: center; justify-content: center;
+}
+.scene-default span {
+  font-size: 24px; opacity: 0.4;
+}
+
+/* ── CORPO DO POST CARD ── */
+.post-body {
+  padding: 18px 20px 14px;
+}
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.post-tag {
+  display: inline-block;
+  font-size: 7px;
+  padding: 3px 8px;
+  border: 2px solid var(--border);
+  background: var(--accent);
+  color: var(--text);
+}
+.post-tag.devlog  { background: #e8c84a; }
+.post-tag.engine  { background: #82c4e0; }
+.post-tag.art     { background: #c8a8e8; }
+.post-tag.design  { background: #f0a070; }
+
+.post-date {
+  font-size: 7px;
+  color: var(--text-muted);
+}
+.post-title {
+  font-size: 10px;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.post-preview {
+  font-size: 7.5px;
+  color: #555;
+  line-height: 2.2;
+  margin-bottom: 14px;
+}
+
+/* ── FOOTER DO CARD ── */
+.post-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.post-action {
+  font-size: 7px;
+  color: var(--text-muted);
+}
+.read-more {
+  margin-left: auto;
+  padding: 8px 14px;
+  background: var(--accent2);
+  border: 3px solid var(--border);
+  box-shadow: 3px 3px 0 var(--border);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.08s, box-shadow 0.08s;
+}
+.read-more:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--border);
+}
+
+/* ── TAG PILLS (sidebar) ── */
+.tag-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px 12px;
+}
+.tag-pill {
+  background: var(--accent);
+  color: var(--text);
+  font-size: 6px;
+  padding: 3px 8px;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  transition: transform 0.08s;
+}
+.tag-pill:hover {
+  transform: translate(1px, 1px);
+  background: var(--accent2);
+  color: #fff;
+}
+
+/* ── POST COUNT BADGE ── */
+.post-count {
+  font-size: 7px;
+  background: var(--accent3);
+  color: #fff;
+  padding: 3px 8px;
+  border: 2px solid var(--border);
+  margin-left: auto;
+}
