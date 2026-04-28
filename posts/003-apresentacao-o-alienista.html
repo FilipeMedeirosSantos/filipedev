@@ -3,206 +3,575 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>#006 — O Alienista: Apresentação do Projeto · FILIPE DEV</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/shared.css">
-    <link rel="stylesheet" href="../css/article.css">
+    <meta name="viewport" content="width=device-width, initial-scale=
+    <title>#003 — O Alienista: Evolução do Design · FILIPE DEV</title>
+    <link href=" https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap " rel="stylesheet ">
+    <link rel="stylesheet " href="../css/shared.css ">
+    <link rel="stylesheet " href="../css/article.css ">
+
+    <style>
+        /* ─── EVOLUTION ARTICLE EXTRAS ─── */
+
+        .evolution-intro {
+            background: rgba(0, 255, 100, 0.04);
+            border: 1px solid rgba(0, 255, 100, 0.2);
+            border-left: 3px solid var(--green, #00ff64);
+            padding: 18px 20px;
+            margin-bottom: 32px;
+            border-radius: 2px;
+        }
+
+        .evolution-intro p {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 7px;
+            line-height: 1.9;
+            color: #aaa;
+            margin: 0;
+        }
+
+        /* ─── TOPIC BLOCK ─── */
+
+        .topic-block {
+            margin-bottom: 56px;
+        }
+
+        .topic-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .topic-num {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 9px;
+            color: var(--green, #00ff64);
+            background: rgba(0, 255, 100, 0.1);
+            border: 1px solid rgba(0, 255, 100, 0.3);
+            padding: 6px 10px;
+            border-radius: 2px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .topic-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            color: #e8e8e8;
+            line-height: 1.5;
+        }
+
+        /* ─── BEFORE / AFTER GRID ─── */
+
+        .ba-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        @media (max-width: 680px) {
+            .ba-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .ba-panel {
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ba-label {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 7px;
+            padding: 6px 10px;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .ba-panel.before .ba-label {
+            background: rgba(255, 80, 80, 0.15);
+            border: 1px solid rgba(255, 80, 80, 0.3);
+            border-bottom: none;
+            color: #ff7070;
+        }
+
+        .ba-panel.after .ba-label {
+            background: rgba(0, 255, 100, 0.1);
+            border: 1px solid rgba(0, 255, 100, 0.3);
+            border-bottom: none;
+            color: #00ff64;
+        }
+
+        .ba-img-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #0a0a0a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .ba-panel.before .ba-img-wrap {
+            border: 1px solid rgba(255, 80, 80, 0.25);
+        }
+
+        .ba-panel.after .ba-img-wrap {
+            border: 1px solid rgba(0, 255, 100, 0.2);
+        }
+
+        .ba-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            image-rendering: pixelated;
+        }
+
+        /* placeholder when no image yet */
+        .ba-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            gap: 10px;
+        }
+
+        .ba-placeholder-icon {
+            font-size: 28px;
+            opacity: 0.3;
+        }
+
+        .ba-placeholder-text {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 6px;
+            color: #444;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        /* ─── COMMENT BLOCK ─── */
+
+        .topic-comment {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-left: 2px solid #555;
+            padding: 14px 18px;
+            margin-top: 4px;
+            border-radius: 0 2px 2px 0;
+        }
+
+        .comment-label {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 6px;
+            color: #555;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .comment-label::before {
+            content: '✏';
+            font-size: 10px;
+        }
+
+        .comment-text {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 7px;
+            color: #666;
+            line-height: 2;
+            font-style: italic;
+            letter-spacing: 0.03em;
+        }
+
+        /* ─── DIVIDER ─── */
+
+        .topic-divider {
+            border: none;
+            border-top: 1px dashed rgba(255, 255, 255, 0.06);
+            margin: 48px 0;
+        }
+
+        /* ─── TIMELINE BADGE no topo ─── */
+
+        .timeline-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 6px;
+            color: #888;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 5px 10px;
+            border-radius: 2px;
+            margin-bottom: 12px;
+        }
+
+        .timeline-badge .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green, #00ff64);
+            display: inline-block;
+            animation: blink 1.4s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.2; }
+        }
+
+    </style>
 </head>
 
 <body>
 
-    <div id="reading-progress"></div>
+    <div id="reading-progress "></div>
 
-    <div class="layout">
+    <div class="layout ">
 
-        <aside class="sidebar-left">
+        <aside class="sidebar-left ">
 
-            <div class="sidebar-logo">
+            <div class="sidebar-logo ">
                 FILIPE DEV
-                <span class="logo-sub">Devlog — O Alienista</span>
-                <span class="logo-tag">DESIGN</span>
+                <span class="logo-sub ">Devlog — O Alienista</span>
+                <span class="logo-tag ">DESIGN</span>
             </div>
 
-            <a href="../index.html" class="back-btn">← VOLTAR AO BLOG</a>
+            <a href="../index.html " class="back-btn ">← VOLTAR AO BLOG</a>
 
-            <span class="nav-section-title">▸ NESTE ARTIGO</span>
+            <span class="nav-section-title ">▸ NESTE ARTIGO</span>
 
-            <nav class="nav-section">
-                <a href="#secao-intro" class="nav-btn active">
-                    <span class="nav-num">01</span>A Premissa
+            <nav class="nav-section ">
+                <a href="#topico-1 " class="nav-btn active ">
+                    <span class="nav-num ">01</span>Interface de Triagem
                 </a>
-                <a href="#secao-mecanicas" class="nav-btn">
-                    <span class="nav-num">02</span>Mecânicas Core
+                <a href="#topico-2 " class="nav-btn ">
+                    <span class="nav-num ">02</span>Mapa de Itaguaí
                 </a>
-                <a href="#secao-roadmap" class="nav-btn">
-                    <span class="nav-num">03</span>Roadmap
+                <a href="#topico-3 " class="nav-btn ">
+                    <span class="nav-num ">03</span>Pixel Art dos NPCs
+                </a>
+                <a href="#topico-4 " class="nav-btn ">
+                    <span class="nav-num ">04</span>Casa Verde / Cenários
+                </a>
+                <a href="#topico-5 " class="nav-btn ">
+                    <span class="nav-num ">05</span>HUD & Sistemas Visuais
                 </a>
             </nav>
 
         </aside>
 
-        <main class="main-content">
+        <main class="main-content ">
 
-            <div class="content-header">
-                <h1>O Alienista: Apresentação do Projeto</h1>
-                <a href="../index.html" class="breadcrumb">← index</a>
+            <div class="content-header ">
+                <h1>Evolução do Design: Do Protótipo ao Atual</h1>
+                <a href="../index.html " class="breadcrumb ">← index</a>
             </div>
 
-            <div class="article-hero">
-                <img src="../img/casaverteste.png" alt="Conceito da Fachada da Casa Verde em Pixel Art" style="width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 16 / 9; border-radius: 4px;">
+            <div class="article-hero ">
+                <img src="../img/casaverteste.png " alt="Conceito da Fachada da Casa Verde em Pixel Art " style="width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 16 / 9; border-radius: 4px; image-rendering: pixelated; ">
             </div>
 
-            <section class="guide-section" id="secao-intro">
-                <span class="section-badge">▸ 01 — INTRODUÇÃO</span>
-                <h2 class="section-title">A Premissa do Jogo</h2>
-
-                <p class="section-intro">
-                    Bem-vindos ao diário de desenvolvimento de <strong>O Alienista</strong>, um jogo focado em narrativa, exploração e gestão de sanidade mental, sendo desenvolvido na Godot 4.
+            <div class="evolution-intro ">
+                <p>
+                    Um comparativo visual entre as primeiras versões do design de O Alienista e o estado atual do projeto.
+                    Cinco áreas principais, cada uma com seus antes e depois — e o que mudou no processo.
                 </p>
+            </div>
 
-                <div class="obra-card">
-                    <div class="obra-num">📖</div>
-                    <div class="obra-content">
-                        <div class="obra-title">O Alienista</div>
-                        <div class="obra-author">Machado de Assis · 1882 · Conto / Novela</div>
-                        <div class="obra-desc">A obra que inspira o jogo. Acompanhamos o Dr. Simão Bacamarte e sua fundação da Casa Verde, questionando a fina linha entre a loucura e a razão.</div>
+            <!-- ─── TÓPICO 1 ─── -->
+            <section class="guide-section topic-block " id="topico-1 ">
+                <span class="section-badge ">▸ 01 — GAME DESIGN</span>
+
+                <div class="topic-header ">
+                    <span class="topic-num ">TÓPICO 01</span>
+                    <span class="topic-title ">Interface de Triagem dos Pacientes</span>
+                </div>
+
+                <div class="timeline-badge ">
+                    <span class="dot "></span> EVOLUÇÃO VISUAL
+                </div>
+
+                <div class="ba-grid ">
+                    <div class="ba-panel before ">
+                        <div class="ba-label ">✕ ANTES</div>
+                        <div class="ba-img-wrap ">
+                            <!-- substitua o src pela imagem antiga -->
+                            <img src="../img/ANTES_triagem.png " alt="Versão antiga da interface de triagem " onerror="this.style.display='none' ; this.nextElementSibling.style.display='flex' ; ">
+                            <div class="ba-placeholder " style="display:none; ">
+                                <span class="ba-placeholder-icon ">🖼</span>
+                                <span class="ba-placeholder-text ">ANTES_triagem.png</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ba-panel after ">
+                        <div class="ba-label ">✓ DEPOIS</div>
+                        <div class="ba-img-wrap ">
+                            <!-- substitua o src pela imagem nova -->
+                            <img src="../img/DEPOIS_triagem.png " alt="Versão atual da interface de triagem " onerror="this.style.display='none' ; this.nextElementSibling.style.display='flex' ; ">
+                            <div class="ba-placeholder " style="display:none; ">
+                                <span class="ba-placeholder-icon ">🖼</span>
+                                <span class="ba-placeholder-text ">DEPOIS_triagem.png</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="callout info">
-                    <span class="callout-title">✅ OBJETIVO DO PROJETO</span> Traduzir a ironia e a crítica social da obra de Machado de Assis para um ambiente interativo em pixel art, onde as escolhas do jogador afetam o destino da cidade de Itaguaí.
+                <div class="topic-comment ">
+                    <div class="comment-label ">COMENTÁRIO DO DEV</div>
+                    <div class="comment-text ">xxxxxxx</div>
                 </div>
             </section>
 
-            <section class="guide-section" id="secao-mecanicas">
-                <span class="section-badge">▸ 02 — GAME DESIGN</span>
-                <h2 class="section-title">Mecânicas Principais</h2>
+            <hr class="topic-divider ">
 
-                <p class="section-intro">
-                    O loop de gameplay é dividido entre diagnosticar os cidadãos e gerenciar a própria sanidade e reputação do Doutor Bacamarte.
-                </p>
+            <!-- ─── TÓPICO 2 ─── -->
+            <section class="guide-section topic-block " id="topico-2 ">
+                <span class="section-badge ">▸ 02 — LEVEL DESIGN</span>
 
-                <div class="step-card">
-                    <div class="step-header">
-                        <div class="step-num">🧠</div>
-                        <div class="step-title">Sistema de Sanidade Dinâmico</div>
+                <div class="topic-header ">
+                    <span class="topic-num ">TÓPICO 02</span>
+                    <span class="topic-title ">Mapa de Itaguaí</span>
+                </div>
+
+                <div class="timeline-badge ">
+                    <span class="dot "></span> EVOLUÇÃO VISUAL
+                </div>
+
+                <div class="ba-grid ">
+                    <div class="ba-panel before ">
+                        <div class="ba-label ">✕ ANTES</div>
+                        <div class="ba-img-wrap ">
+                            <img src="../img/ANTES_mapa.png " alt="Primeira versão do mapa " onerror="this.style.display='none' ; this.nextElementSibling.style.display='flex' ; ">
+                            <div class="ba-placeholder " style="display:none; ">
+                                <span class="ba-placeholder-icon ">🖼</span>
+                                <span class="ba-placeholder-text ">ANTES_mapa.png</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="step-body">
-                        A sanidade não é apenas uma barra de vida, mas uma lente através da qual o jogador vê o mundo:
-                        <ul>
-                            <li>Diálogos mudam dependendo do nível de sanidade.</li>
-                            <li>Alucinações visuais começam a aparecer no mapa.</li>
-                            <li>Pacientes podem ser internados injustamente se você estiver confuso.</li>
-                        </ul>
+                    <div class="ba-panel after ">
+                        <div class="ba-label ">✓ DEPOIS</div>
+                        <div class="ba-img-wrap ">
+                            <img src="../img/DEPOIS_mapa.png " alt="Versão atual do mapa " onerror="this.style.display='none' ; this.nextElementSibling.style.display='flex' ; ">
+                            <div class="ba-placeholder " style="display:none; ">
+                                <span class="ba-placeholder-icon ">🖼</span>
+                                <span class="ba-placeholder-text ">DEPOIS_mapa.png</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="flow-box">
-                    <div class="flow-step">
-                        <span class="flow-arrow">1</span>
-                        <span class="flow-actor">Jogador</span>
-                        <span class="flow-action">Avalia um cidadão de Itaguaí</span>
-                    </div>
-                    <div class="flow-step">
-                        <span class="flow-arrow">→</span>
-                        <span class="flow-actor">Sistema</span>
-                        <span class="flow-action">Calcula a "Loucura" baseada em traços</span>
-                        <span class="flow-condition">[Se diagnóstico for controverso]</span>
-                    </div>
-                    <div class="flow-step">
-                        <span class="flow-arrow">→</span>
-                        <span class="flow-actor">Casa Verde</span>
-                        <span class="flow-action">Recebe novo interno</span>
-                        <span class="flow-result-yes">→ Revolta da população aumenta</span>
-                    </div>
+                <div class="topic-comment ">
+                    <div class="comment-label ">COMENTÁRIO DO DEV</div>
+                    <div class="comment-text ">xxxxxxx</div>
                 </div>
-
             </section>
 
-            <section class="guide-section" id="secao-roadmap">
-                <span class="section-badge">▸ 03 — PRÓXIMOS PASSOS</span>
-                <h2 class="section-title">Roadmap Inicial</h2>
+            <hr class="topic-divider ">
 
-                <p class="section-intro">
-                    Muito trabalho pela frente. Aqui estão os marcos principais do desenvolvimento da versão Alpha.
-                </p>
+            <!-- ─── TÓPICO 3 ─── -->
+            <section class="guide-section topic-block " id="topico-3 ">
+                <span class="section-badge ">▸ 03 — ARTE</span>
 
-                <div class="checklist">
-                    <div class="checklist-header">▸ ALPHA MILESTONES</div>
-                    <div class="check-item checked">
-                        <div class="check-box">✓</div>
-                        <span class="check-text">Estrutura base da Engine (Godot 4)</span>
+                <div class="topic-header ">
+                    <span class="topic-num ">TÓPICO 03</span>
+                    <span class="topic-title ">Pixel Art dos NPCs e Personagens</span>
+                </div>
+
+                <div class="timeline-badge ">
+                    <span class="dot "></span> EVOLUÇÃO VISUAL
+                </div>
+
+                <div class="ba-grid ">
+                    <div class="ba-panel before ">
+                        <div class="ba-label ">✕ ANTES</div>
+                        <div class="ba-img-wrap ">
+                            <img src="../img/ANTES_npcs.png " alt="Primeiros sprites dos NPCs " onerror="this.style.display='none' ; this.nextElementSibling.style.display='flex' ; ">
+                            <div class="ba-placeholder " style="display:none; ">
+                                <span class="ba-placeholder-icon ">🖼</span>
+                                <span class="ba-placeholder-text ">ANTES_npcs.png</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="check-item checked">
-                        <div class="check-box">✓</div>
-                        <span class="check-text">Tilesets de Itaguaí (Centro Histórico)</span>
-                    </div>
-                    <div class="check-item">
-                        <div class="check-box"></div>
-                        <span class="check-text">Lógica do Medidor de Sanidade</span>
-                    </div>
-                    <div class="check-item">
-                        <div class="check-box"></div>
-                        <span class="check-text">Sistema de Diálogos Ramificados</span>
-                    </div>
-                    <div class="check-item">
-                        <div class="check-box"></div>
-                        <span class="check-text">Interface da Casa Verde</span>
+                    <div class="ba-panel after ">
+                        <div class="ba-label ">✓ DEPOIS</div>
+                        <div class="ba-img-wrap ">
+                            <img src="../img/DEPOIS_npcs.png " alt="Sprites atuais dos NPCs " onerror="this.style.display='none' ; this.nextElementSibling.style.display='flex' ; ">
+                            <div class="ba-placeholder " style="display:none; ">
+                                <span class="ba-placeholder-icon ">🖼</span>
+                                <span class="ba-placeholder-text ">DEPOIS_npcs.png</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
+                <div class="topic-comment ">
+                    <div class="comment-label ">COMENTÁRIO DO DEV</div>
+                    <div class="comment-text ">xxxxxxx</div>
+                </div>
+            </section>
+
+            <hr class="topic-divider ">
+
+            <!-- ─── TÓPICO 4 ─── -->
+            <section class="guide-section topic-block " id="topico-4 ">
+                <span class="section-badge ">▸ 04 — CENÁRIOS</span>
+
+                <div class="topic-header ">
+                    <span class="topic-num ">TÓPICO 04</span>
+                    <span class="topic-title ">Casa Verde e Cenários Internos</span>
+                </div>
+
+                <div class="timeline-badge ">
+                    <span class="dot "></span> EVOLUÇÃO VISUAL
+                </div>
+
+                <div class="ba-grid ">
+                    <div class="ba-panel before ">
+                        <div class="ba-label ">✕ ANTES</div>
+                        <div class="ba-img-wrap ">
+                            <img src="../img/ANTES_casaverde.png " alt="Primeiro conceito da Casa Verde " onerror="this.style.display='none' ; this.nextElementSibling.style.display='flex' ; ">
+                            <div class="ba-placeholder " style="display:none; ">
+                                <span class="ba-placeholder-icon ">🖼</span>
+                                <span class="ba-placeholder-text ">ANTES_casaverde.png</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ba-panel after ">
+                        <div class="ba-label ">✓ DEPOIS</div>
+                        <div class="ba-img-wrap ">
+                            <img src="../img/DEPOIS_casaverde.png " alt="Casa Verde atual " onerror="this.style.display='none' ; this.nextElementSibling.style.display='flex' ; ">
+                            <div class="ba-placeholder " style="display:none; ">
+                                <span class="ba-placeholder-icon ">🖼</span>
+                                <span class="ba-placeholder-text ">DEPOIS_casaverde.png</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-comment ">
+                    <div class="comment-label ">COMENTÁRIO DO DEV</div>
+                    <div class="comment-text ">xxxxxxx</div>
+                </div>
+            </section>
+
+            <hr class="topic-divider ">
+
+            <!-- ─── TÓPICO 5 ─── -->
+            <section class="guide-section topic-block " id="topico-5 ">
+                <span class="section-badge ">▸ 05 — UI / UX</span>
+
+                <div class="topic-header ">
+                    <span class="topic-num ">TÓPICO 05</span>
+                    <span class="topic-title ">HUD e Sistemas Visuais</span>
+                </div>
+
+                <div class="timeline-badge ">
+                    <span class="dot "></span> EVOLUÇÃO VISUAL
+                </div>
+
+                <div class="ba-grid ">
+                    <div class="ba-panel before ">
+                        <div class="ba-label ">✕ ANTES</div>
+                        <div class="ba-img-wrap ">
+                            <img src="../img/ANTES_hud.png " alt="HUD original " onerror="this.style.display='none' ; this.nextElementSibling.style.display='flex' ; ">
+                            <div class="ba-placeholder " style="display:none; ">
+                                <span class="ba-placeholder-icon ">🖼</span>
+                                <span class="ba-placeholder-text ">ANTES_hud.png</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ba-panel after ">
+                        <div class="ba-label ">✓ DEPOIS</div>
+                        <div class="ba-img-wrap ">
+                            <img src="../img/DEPOIS_hud.png " alt="HUD atual " onerror="this.style.display='none' ; this.nextElementSibling.style.display='flex' ; ">
+                            <div class="ba-placeholder " style="display:none; ">
+                                <span class="ba-placeholder-icon ">🖼</span>
+                                <span class="ba-placeholder-text ">DEPOIS_hud.png</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-comment ">
+                    <div class="comment-label ">COMENTÁRIO DO DEV</div>
+                    <div class="comment-text ">xxxxxxx</div>
+                </div>
             </section>
 
         </main>
 
-        <aside class="sidebar-right">
+        <aside class="sidebar-right ">
 
-            <div class="widget">
-                <span class="widget-title">SOBRE O POST</span>
-                <div class="widget-body">
-                    <div class="stat-row"><span>Data</span><span class="stat-val" style="font-size:7px;">02 Abr 2026</span></div>
-                    <div class="stat-row"><span>Número</span><span class="stat-val">#006</span></div>
-                    <div class="stat-row"><span>Tag</span><span class="stat-val" style="font-size:7px;">DESIGN</span></div>
-                    <div class="stat-row"><span>Leitura</span><span class="stat-val" style="font-size:7px;">~4 min</span></div>
-                    <div class="stat-row"><span>❤️ Likes</span><span class="stat-val">0</span></div>
+            <div class="widget ">
+                <span class="widget-title ">SOBRE O POST</span>
+                <div class="widget-body ">
+                    <div class="stat-row "><span>Data</span><span class="stat-val " style="font-size:7px; ">Abr 2026</span></div>
+                    <div class="stat-row "><span>Número</span><span class="stat-val ">#003</span></div>
+                    <div class="stat-row "><span>Tag</span><span class="stat-val " style="font-size:7px; ">DESIGN</span></div>
+                    <div class="stat-row "><span>Leitura</span><span class="stat-val " style="font-size:7px; ">~5 min</span></div>
+                    <div class="stat-row "><span>❤️ Likes</span><span class="stat-val ">0</span></div>
                 </div>
             </div>
 
-            <div class="widget">
-                <span class="widget-title">PROGRESSO DO JOGO</span>
-                <div class="widget-body">
-                    <div class="progress-label"><span>Engine Core</span><span>90%</span></div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width:90%"></div>
+            <div class="widget ">
+                <span class="widget-title ">PROGRESSO DO JOGO</span>
+                <div class="widget-body ">
+                    <div class="progress-label "><span>Engine Core</span><span>90%</span></div>
+                    <div class="progress-bar ">
+                        <div class="progress-fill " style="width:90% "></div>
                     </div>
 
-                    <div class="progress-label"><span>Arte / Tiles</span><span>50%</span></div>
-                    <div class="progress-bar">
-                        <div class="progress-fill yellow" style="width:50%"></div>
+                    <div class="progress-label "><span>Arte / Tiles</span><span>50%</span></div>
+                    <div class="progress-bar ">
+                        <div class="progress-fill yellow " style="width:50% "></div>
                     </div>
 
-                    <div class="progress-label"><span>Sistemas</span><span>15%</span></div>
-                    <div class="progress-bar">
-                        <div class="progress-fill red" style="width:15%"></div>
+                    <div class="progress-label "><span>Sistemas</span><span>15%</span></div>
+                    <div class="progress-bar ">
+                        <div class="progress-fill red " style="width:15% "></div>
                     </div>
                 </div>
             </div>
 
-            <div class="widget">
-                <span class="widget-title">TAGS</span>
-                <div class="tag-cloud">
-                    <span class="tag green">design</span>
-                    <span class="tag">pitch</span>
-                    <span class="tag">godot4</span>
+            <div class="widget ">
+                <span class="widget-title ">TÓPICOS</span>
+                <div class="widget-body " style="display:flex; flex-direction:column; gap:6px; ">
+                    <div class="stat-row "><span style="font-size:6px; color:#888; ">01</span><span class="stat-val " style="font-size:6px; color:#aaa; ">Triagem</span></div>
+                    <div class="stat-row "><span style="font-size:6px; color:#888; ">02</span><span class="stat-val " style="font-size:6px; color:#aaa; ">Mapa</span></div>
+                    <div class="stat-row "><span style="font-size:6px; color:#888; ">03</span><span class="stat-val " style="font-size:6px; color:#aaa; ">NPCs</span></div>
+                    <div class="stat-row "><span style="font-size:6px; color:#888; ">04</span><span class="stat-val " style="font-size:6px; color:#aaa; ">Cenários</span></div>
+                    <div class="stat-row "><span style="font-size:6px; color:#888; ">05</span><span class="stat-val " style="font-size:6px; color:#aaa; ">HUD</span></div>
                 </div>
             </div>
 
-            <div class="widget">
-                <span class="widget-title">NAVEGAÇÃO</span>
-                <div class="link-list">
-                    <a href="005-meu-titulo.html" class="link-item">🎮 #005 — Post anterior</a>
-                    <a href="../index.html" class="link-item">🏠 Blog</a>
+            <div class="widget ">
+                <span class="widget-title ">TAGS</span>
+                <div class="tag-cloud ">
+                    <span class="tag green ">design</span>
+                    <span class="tag ">evolução</span>
+                    <span class="tag ">godot4</span>
+                    <span class="tag ">pixel art</span>
+                </div>
+            </div>
+
+            <div class="widget ">
+                <span class="widget-title ">NAVEGAÇÃO</span>
+                <div class="link-list ">
+                    <a href="005-meu-titulo.html " class="link-item ">🎮 #005 — Post anterior</a>
+                    <a href="../index.html " class="link-item ">🏠 Blog</a>
                 </div>
             </div>
 
@@ -210,7 +579,19 @@
 
     </div>
 
-    <script src="../js/article.js"></script>
+    <script src="../js/article.js "></script>
+</body>
+
+</html>
+                <a href="../index.html " class="link-item ">🏠 Blog</a>
+                </div>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <script src="../js/article.js "></script>
 </body>
 
 </html>
