@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FILIPE DEV — Devlog</title>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/shared.css">
-<link rel="stylesheet" href="css/index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FILIPE DEV — Devlog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
 
-<div class="layout">
+    <div class="layout">
 
-  <aside class="sidebar-left">
+        <aside class="sidebar-left">
 
-    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom: 24px;">
-      <div class="avatar-wrap">
-        <div class="avatar-frame">
-          <svg class="pixel-avatar" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" image-rendering="pixelated">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom: 24px;">
+                <div class="avatar-wrap">
+                    <div class="avatar-frame">
+                        <svg class="pixel-avatar" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" image-rendering="pixelated">
             <rect x="5" y="1" width="6" height="6" fill="#c8845a"/>
             <rect x="4" y="2" width="1" height="4" fill="#c8845a"/>
             <rect x="11" y="2" width="1" height="4" fill="#c8845a"/>
@@ -33,104 +35,111 @@
             <rect x="3" y="1" width="10" height="2" fill="#1a1a1a"/>
             <rect x="4" y="0" width="8" height="2" fill="#1a1a1a"/>
           </svg>
-        </div>
-      </div>
-      <div>
-        <div class="username">FILIPE DEV</div>
-        <div class="user-status"><span class="online-dot"></span>online · dev mode</div>
-      </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="username">FILIPE DEV</div>
+                    <div class="user-status"><span class="online-dot"></span>online · dev mode</div>
+                </div>
+            </div>
+
+            <span class="nav-section-title">▸ NAVEGAÇÃO</span>
+            <nav class="nav-section" style="margin-bottom: 24px;">
+                <a href="projetos.html" class="nav-btn" style="text-decoration: none; display: block; text-align: left;">📁 PROJETOS</a>
+            </nav>
+
+            <span class="nav-section-title">▸ FILTRAR POSTS</span>
+            <nav class="nav-section">
+                <button class="nav-btn active" data-filter="all">📋 TODOS OS POSTS</button>
+                <button class="nav-btn" data-filter="devlog">📖 DEVLOG</button>
+                <button class="nav-btn" data-filter="engine">⚙️ ENGINE / GODOT</button>
+                <button class="nav-btn" data-filter="art">🎨 PIXEL ART</button>
+                <button class="nav-btn" data-filter="design">🎮 GAME DESIGN</button>
+            </nav>
+
+            <span class="nav-section-title">▸ LINKS</span>
+            <div class="link-list">
+                <a href="https://x.com/TheAllienist_" class="link-item">🐦 Twitter / X</a>
+                <a href="https://github.com/FilipeMedeirosSantos" class="link-item">🐙 GitHub</a>
+                <a href="https://filipemedeiros.itch.io/pai-contra-me" class="link-item">🎮 itch.io</a>
+            </div>
+
+        </aside>
+
+        <main class="feed">
+
+            <div class="feed-header">
+                <h1>DEVLOG<span class="blink-cursor"></span></h1>
+                <span id="post-count" class="post-count">— POSTS</span>
+            </div>
+
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">TODOS</button>
+                <button class="filter-tab" data-filter="devlog">DEVLOG</button>
+                <button class="filter-tab" data-filter="engine">ENGINE</button>
+                <button class="filter-tab" data-filter="art">ART</button>
+                <button class="filter-tab" data-filter="design">DESIGN</button>
+            </div>
+
+            <div id="post-feed"></div>
+
+        </main>
+
+        <aside class="sidebar-right">
+
+            <div class="widget">
+                <span class="widget-title">EM DESENVOLVIMENTO</span>
+                <div class="widget-body">
+                    <strong style="color:var(--accent2);font-size:8px;display:block;margin-bottom:6px;">O Alienista</strong>
+                    <p>RPG narrativo baseado na obra de Machado de Assis. Godot 4 · Pixel Art.</p>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-label"><span>Narrativa</span><span>65%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width:65%"></div>
+                        </div>
+                        <div class="progress-label"><span>Arte</span><span>30%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill yellow" style="width:30%"></div>
+                        </div>
+                        <div class="progress-label"><span>Engine</span><span>45%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill red" style="width:45%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget">
+                <span class="widget-title">ESTATÍSTICAS</span>
+                <div class="widget-body" style="padding:10px 12px;">
+                    <div class="stat-row"><span>Total posts</span><span class="stat-val">4</span></div>
+                    <div class="stat-row"><span>Commits</span><span class="stat-val">147</span></div>
+                    <div class="stat-row"><span>Dias dev</span><span class="stat-val">72</span></div>
+                    <div class="stat-row"><span>Sprites</span><span class="stat-val">23</span></div>
+                    <div class="stat-row"><span>Tiles</span><span class="stat-val">86</span></div>
+                </div>
+            </div>
+
+            <div class="widget">
+                <span class="widget-title">TAGS</span>
+                <div class="tag-pills">
+                    <span class="tag-pill" data-filter="devlog">devlog</span>
+                    <span class="tag-pill" data-filter="engine">godot4</span>
+                    <span class="tag-pill" data-filter="art">pixelart</span>
+                    <span class="tag-pill" data-filter="design">gamedesign</span>
+                    <span class="tag-pill">rpg</span>
+                    <span class="tag-pill">machado</span>
+                    <span class="tag-pill">indie</span>
+                    <span class="tag-pill">brasil</span>
+                </div>
+            </div>
+
+        </aside>
+
     </div>
 
-    <span class="nav-section-title">▸ NAVEGAÇÃO</span>
-    <nav class="nav-section" style="margin-bottom: 24px;">
-      <a href="projetos.html" class="nav-btn" style="text-decoration: none; display: block; text-align: left;">📁 PROJETOS</a>
-    </nav>
-
-    <span class="nav-section-title">▸ FILTRAR POSTS</span>
-    <nav class="nav-section">
-      <button class="nav-btn active" data-filter="all">📋 TODOS OS POSTS</button>
-      <button class="nav-btn" data-filter="devlog">📖 DEVLOG</button>
-      <button class="nav-btn" data-filter="engine">⚙️ ENGINE / GODOT</button>
-      <button class="nav-btn" data-filter="art">🎨 PIXEL ART</button>
-      <button class="nav-btn" data-filter="design">🎮 GAME DESIGN</button>
-    </nav>
-
-    <span class="nav-section-title">▸ LINKS</span>
-    <div class="link-list">
-      <a href="#" class="link-item">🐦 Twitter / X</a>
-      <a href="#" class="link-item">🐙 GitHub</a>
-      <a href="#" class="link-item">🎮 itch.io</a>
-    </div>
-
-  </aside>
-
-  <main class="feed">
-
-    <div class="feed-header">
-      <h1>DEVLOG<span class="blink-cursor"></span></h1>
-      <span id="post-count" class="post-count">— POSTS</span>
-    </div>
-
-    <div class="filter-tabs">
-      <button class="filter-tab active" data-filter="all">TODOS</button>
-      <button class="filter-tab" data-filter="devlog">DEVLOG</button>
-      <button class="filter-tab" data-filter="engine">ENGINE</button>
-      <button class="filter-tab" data-filter="art">ART</button>
-      <button class="filter-tab" data-filter="design">DESIGN</button>
-    </div>
-
-    <div id="post-feed"></div>
-
-  </main>
-
-  <aside class="sidebar-right">
-
-    <div class="widget">
-      <span class="widget-title">EM DESENVOLVIMENTO</span>
-      <div class="widget-body">
-        <strong style="color:var(--accent2);font-size:8px;display:block;margin-bottom:6px;">O Alienista</strong>
-        <p>RPG narrativo baseado na obra de Machado de Assis. Godot 4 · Pixel Art.</p>
-        <div class="progress-bar-wrap">
-          <div class="progress-label"><span>Narrativa</span><span>65%</span></div>
-          <div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div>
-          <div class="progress-label"><span>Arte</span><span>30%</span></div>
-          <div class="progress-bar"><div class="progress-fill yellow" style="width:30%"></div></div>
-          <div class="progress-label"><span>Engine</span><span>45%</span></div>
-          <div class="progress-bar"><div class="progress-fill red" style="width:45%"></div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="widget">
-      <span class="widget-title">ESTATÍSTICAS</span>
-      <div class="widget-body" style="padding:10px 12px;">
-        <div class="stat-row"><span>Total posts</span><span class="stat-val">4</span></div>
-        <div class="stat-row"><span>Commits</span><span class="stat-val">147</span></div>
-        <div class="stat-row"><span>Dias dev</span><span class="stat-val">72</span></div>
-        <div class="stat-row"><span>Sprites</span><span class="stat-val">23</span></div>
-        <div class="stat-row"><span>Tiles</span><span class="stat-val">86</span></div>
-      </div>
-    </div>
-
-    <div class="widget">
-      <span class="widget-title">TAGS</span>
-      <div class="tag-pills">
-        <span class="tag-pill" data-filter="devlog">devlog</span>
-        <span class="tag-pill" data-filter="engine">godot4</span>
-        <span class="tag-pill" data-filter="art">pixelart</span>
-        <span class="tag-pill" data-filter="design">gamedesign</span>
-        <span class="tag-pill">rpg</span>
-        <span class="tag-pill">machado</span>
-        <span class="tag-pill">indie</span>
-        <span class="tag-pill">brasil</span>
-      </div>
-    </div>
-
-  </aside>
-
-</div>
-
-<script src="js/posts-data.js"></script>
-<script src="js/index.js"></script>
+    <script src="js/posts-data.js"></script>
+    <script src="js/index.js"></script>
 </body>
+
 </html>
